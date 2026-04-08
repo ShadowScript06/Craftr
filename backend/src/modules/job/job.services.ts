@@ -1,24 +1,45 @@
+import { jobData } from "../../utils/data/job";
+import Job from "../../types/job";
+async function getJobs(pageNo: number) {
+  const limit = 10;
 
-import { jobData } from "../../utils/data/job"
+  if (pageNo <= 0) return [];
 
+  const start = (pageNo - 1) * limit;
+  const end = Math.min(start + limit, jobData.length);
 
-async function getJobs(pageNo:number){
+  if (start >= jobData.length) return [];
 
-    if(pageNo*10 -10 > jobData.length || pageNo<=0){
-        return null;
-    }
+  const jobs = [];
 
-    let start=(pageNo-1)*10;
-    let end=pageNo*10;
+  for (let i = start; i < end; i++) {
+    jobs.push(jobData[i]);
+  }
 
-    const jobs=[];
-    
-    for(let i=start; i<end; i++){
-        jobs.push(jobData[i])
-    }
-
-    return jobs
-
+  return jobs;
 }
 
-export const jobServices={getJobs}
+function getJobById(id: string) {
+  for (let i = 0; i < jobData.length; i++) {
+    const currJob = jobData[i];
+
+    if (currJob._id === id) {
+      return currJob;
+    }
+  }
+
+  return null;
+}
+
+function searchJobs(search: string) {
+  let jobs: Job[] = [];
+
+  jobs = jobData.filter((job) =>
+    job.title.toLowerCase().includes(search.toLowerCase()),
+  );
+
+ 
+  return jobs;
+}
+
+export const jobServices = { getJobs, getJobById, searchJobs };

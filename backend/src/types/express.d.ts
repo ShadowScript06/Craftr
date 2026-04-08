@@ -1,4 +1,4 @@
-import { Request } from "express";
+export {};
 
 declare global {
   namespace Express {
@@ -7,6 +7,9 @@ declare global {
         userId: string;
         sessionId?: string;
         sessionClaims?: Record<string, any>;
+      };
+      user?: {
+        id: string;
       };
     }
   }

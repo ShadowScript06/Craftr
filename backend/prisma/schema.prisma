@@ -25,6 +25,7 @@ model User{
   createdAt DateTime @default(now())
   updateAt DateTime @updatedAt
 
+  applications Application[]
 }
 
 model Subscription{
@@ -44,4 +45,40 @@ enum Plan{
   FREE
   PRO
   PREMIUM
+}
+
+
+model Application{
+  id String @id @default(uuid())
+  userId String 
+  user          User        @relation(fields: [userId], references: [id])
+  companyName String
+  role String
+  link String
+  source String
+  status ApplicationStatus @default(APPLIED)
+  appliedAt DateTime @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  notes Note[]
+}
+
+model Note{
+  id String @id @default(uuid())
+  application Application @relation(fields: [applicationId], references: [id])
+
+  applicationId String 
+
+  content String
+
+  createdAt DateTime @default(now())
+
+}
+
+enum ApplicationStatus{
+  APPLIED
+  SHORTLISTED
+  INTERVIEW
+  REJECTED
+  OFFER
 }

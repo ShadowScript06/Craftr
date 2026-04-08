@@ -49,3 +49,13 @@ export type User = Prisma.UserModel
  * 
  */
 export type Subscription = Prisma.SubscriptionModel
+/**
+ * Model Application
+ * 
+ */
+export type Application = Prisma.ApplicationModel
+/**
+ * Model Note
+ * 
+ */
+export type Note = Prisma.NoteModel

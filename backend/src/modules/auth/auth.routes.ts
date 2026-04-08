@@ -5,4 +5,5 @@ import { requireAuth } from "@clerk/express";
 export const authRouter=express.Router();
 
 
+
 authRouter.post('/sync-user', requireAuth(), authController.syncUser);

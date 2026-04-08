@@ -5,6 +5,8 @@ const dotenv=require('dotenv');
 import {authRouter }from "./modules/auth/auth.routes";
 import { jobRouter } from "./modules/job/job.routes";
 import {clerkMiddleware} from "@clerk/express";
+import applicationRouter from "./modules/application/application.routes";
+
 
 
 
@@ -20,6 +22,7 @@ app.use(express.json());
 app.use(clerkMiddleware());
 app.use('/api/auth',authRouter);
 app.use('/api/jobs',jobRouter);
+app.use("/api/applications",applicationRouter);
 
 
 

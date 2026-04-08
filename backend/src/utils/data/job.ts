@@ -17,7 +17,8 @@ export async function fetchJobs() {
 
     const tempData = response.data.result.jobs;
 
-    // console.log(tempData);
+    jobData=[];
+   
 
    jobData= tempData.map((job: any) => {
       return {
@@ -48,6 +49,7 @@ export async function fetchJobs() {
       };
     });
 
+    
     console.log("Job data fetched.");
 
     

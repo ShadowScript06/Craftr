@@ -10,4 +10,6 @@
  */
 export type * from './models/User'
 export type * from './models/Subscription'
+export type * from './models/Application'
+export type * from './models/Note'
 export type * from './commonInputTypes'
