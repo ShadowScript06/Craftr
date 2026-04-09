@@ -52,20 +52,22 @@ model Application{
   id String @id @default(uuid())
   userId String 
   user          User        @relation(fields: [userId], references: [id])
-  companyName String
+  company String
   role String
   link String
   source String
   status ApplicationStatus @default(APPLIED)
   appliedAt DateTime @default(now())
   updatedAt     DateTime   @updatedAt
+  location String 
+  salary String
 
   notes Note[]
 }
 
 model Note{
   id String @id @default(uuid())
-  application Application @relation(fields: [applicationId], references: [id])
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
 
   applicationId String 
 

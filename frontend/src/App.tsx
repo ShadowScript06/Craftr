@@ -6,6 +6,8 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignupPage";
 import JobsPage from "./pages/JobsPage";
 import JobDetail from "./pages/JobDetail";
+import ApplicationTracker from "./pages/ApplicationTracker";
+import ApplicationDetail from "./pages/ApplicationDetail";
 
 
 function App() {
@@ -18,6 +20,10 @@ function App() {
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/jobs" element={<JobsPage/>}/>
         <Route path="/jobs/:id" element={<JobDetail />} />
+
+        <Route path="/applicationtracker" element={<ApplicationTracker/>}/>
+
+        <Route path="/applicationtracker/:id" element={<ApplicationDetail />} />
       </Routes>
     </div>
   );

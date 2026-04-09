@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const createApplicationSchema = z.object({
   body: z.object({
-    companyName: z.string().min(1, "Company name is required"),
+    company: z.string().min(1, "Company name is required"),
     role: z.string().min(1, "Role is required"),
     link: z.string().optional(),
     source: z.string().optional(),
@@ -13,5 +13,7 @@ export const createApplicationSchema = z.object({
       "REJECTED",
       "OFFER",
     ]).optional(),
+    location:z.string(),
+    salary:z.string()
   }),
 });

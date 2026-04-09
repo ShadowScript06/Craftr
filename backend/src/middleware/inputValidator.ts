@@ -1,6 +1,5 @@
 
 
-import { ZodSchema } from "zod/v3";
 import { Request, Response, NextFunction } from "express";
 
 export const validate=(schema:any)=>(request:Request,response:Response,next:NextFunction)=>{
@@ -9,6 +8,7 @@ export const validate=(schema:any)=>(request:Request,response:Response,next:Next
             body:request.body,
         })
 
+        console.log(result);
          if(!result.success){
             return response.status(400).json({
                 success:false,

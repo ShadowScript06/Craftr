@@ -11,7 +11,7 @@ function DashBoard() {
   useEffect(() => {
     async function syncUser() {
       const token = await getToken();
-
+      console.log(token);
       const response = await axios.post(
         "http://localhost:5000/api/auth/sync-user",
         {}, // empty body
@@ -42,11 +42,11 @@ function DashBoard() {
           {/* Skill Finder Box */}
           <div className="bg-white shadow rounded p-6 flex flex-col justify-between">
             <div>
-              <h2 className="font-bold text-lg mb-2">Find Skills</h2>
-              <p>Discover and improve your skills for your career growth.</p>
+              <h2 className="font-bold text-lg mb-2">Track Applications</h2>
+              <p>Keep track of your job application and Make you job search journey hassle free.</p>
             </div>
-            <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-              Explore
+            <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition" onClick={()=>navigate('/applicationtracker')}>
+              Add Application
             </button>
           </div>
 

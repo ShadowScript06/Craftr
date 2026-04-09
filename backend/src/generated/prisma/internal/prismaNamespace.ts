@@ -766,13 +766,15 @@ export type SubscriptionScalarFieldEnum = (typeof SubscriptionScalarFieldEnum)[k
 export const ApplicationScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  companyName: 'companyName',
+  company: 'company',
   role: 'role',
   link: 'link',
   source: 'source',
   status: 'status',
   appliedAt: 'appliedAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  location: 'location',
+  salary: 'salary'
 } as const
 
 export type ApplicationScalarFieldEnum = (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum]

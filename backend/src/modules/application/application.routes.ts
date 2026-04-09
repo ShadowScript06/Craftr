@@ -1,4 +1,4 @@
-import express, { application } from "express";
+import express from "express";
 
 import { requireAuth } from "@clerk/express";
 
@@ -11,9 +11,10 @@ import { createNoteSchema } from "../../config/Validations/createNoteSchema";
 
 const router = express.Router();
 
+
 router.post(
   "/",
-  requireAuth(),
+  requireAuth(), 
   attachUser,
   validate(createApplicationSchema),
   applicationController.createApplication,
@@ -43,14 +44,21 @@ router.post(
 
 
 router.delete(
-  "/notes/:noteId",
+  "/:applicationId/notes/:noteId",
   requireAuth(),
   attachUser,
   applicationController.deleteNote
 );
 
+router.patch('/:applicationId/notes/:noteId',
+    requireAuth(),
+    attachUser,
+    applicationController.updateNote
+);
+
+
 router.get(
-  "/notes/:applicationId",
+  "/:applicationId/notes",
   requireAuth(),      // 🔐 ensure user is logged in
   attachUser,         // 🧠 attach request.user.id
   applicationController.getAllNotes

@@ -33,6 +33,17 @@ const updateApplication = async (
   userId: string,
   data: any
 ) => {
+
+  const application=await prisma.application.findUnique({
+    where:{
+      userId:userId,
+      id:applicationId
+    }
+  })
+
+  if(!application){
+    return null
+  }
   return prisma.application.update({
     where: { id: applicationId },
     data,

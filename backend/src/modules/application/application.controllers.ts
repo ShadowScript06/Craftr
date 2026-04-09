@@ -1,4 +1,3 @@
-
 import { applicationServices } from "./application.services";
 import { Request, Response } from "express";
 import { AuthRequest } from "../../middleware/attachUser";
@@ -6,21 +5,25 @@ import { AuthRequest } from "../../middleware/attachUser";
 const createApplication = async (request: AuthRequest, response: Response) => {
   try {
     const userId = (request as any).user?.id;
-    if(!userId)  return response.status(403).json({
-        success:false,
-        message:"Invalid input"
-    })
+    if (!userId)
+      return response.status(403).json({
+        success: false,
+        message: "Invalid input",
+      });
 
     // ✅ extract only allowed fields (avoid blindly spreading)
-    const { companyName, role, link, source, status } = request.body;
+    const { company, role, link, source, status, salary, location } =
+      request.body;
 
     const application = await applicationServices.createApplication(
       {
-        companyName,
+        company,
         role,
         link,
         source,
         status,
+        salary,
+        location,
       },
       userId,
     );
@@ -66,31 +69,35 @@ const getAllApplications = async (request: Request, response: Response) => {
 
 const getApplicationById = async (request: Request, response: Response) => {
   try {
-     const userId = (request as any).user?.id;
+    const userId = (request as any).user?.id;
 
-     const applicationId=request.params.id;
+    const applicationId = request.params.id;
 
-     if(!applicationId) return response.status(403).json({
-        success:false,
-        message:"Invalid Input"
-     });
+    if (!applicationId)
+      return response.status(403).json({
+        success: false,
+        message: "Invalid Input",
+      });
 
-    //@ts-ignore
-     const application=await applicationServices.getApplicationById(applicationId,userId);
 
-     if(!application){
-        return response.status(404).json({
-            success:false,
-            message:"Record not Found"
-        });
-     }
+    const application = await applicationServices.getApplicationById(
+      //@ts-ignore
+      applicationId,
+      userId,
+    );
 
-     return response.status(200).json({
-        success:true,
-        data:application,
-        message:"Application Fetched Succesfully"
-     })
+    if (!application) {
+      return response.status(404).json({
+        success: false,
+        message: "Record not Found",
+      });
+    }
 
+    return response.status(200).json({
+      success: true,
+      data: application,
+      message: "Application Fetched Succesfully",
+    });
   } catch (error) {
     console.log(error);
     response.status(500).json({
@@ -99,31 +106,28 @@ const getApplicationById = async (request: Request, response: Response) => {
   }
 };
 
-
-
-
- const updateApplication = async (
-  request: Request,
-  response: Response
-) => {
+const updateApplication = async (request: Request, response: Response) => {
   try {
     const userId = (request as any).user?.id;
     const { applicationId } = request.params;
 
     // ✅ extract only allowed fields (partial update)
-    const { companyName, role, link, source, status } = request.body;
+    const { company, role, link, source, status, location, salary } =
+      request.body;
 
     const updatedApplication = await applicationServices.updateApplication(
-        //@ts-ignore
+      //@ts-ignore
       applicationId,
       userId,
       {
-        companyName,
+        company,
         role,
         link,
         source,
         status,
-      }
+        location,
+        salary,
+      },
     );
 
     if (!updatedApplication) {
@@ -137,7 +141,6 @@ const getApplicationById = async (request: Request, response: Response) => {
       success: true,
       data: updatedApplication,
     });
-
   } catch (error) {
     console.error("Update Application Error:", error);
 
@@ -148,22 +151,22 @@ const getApplicationById = async (request: Request, response: Response) => {
   }
 };
 
- const createNote = async (
-  request: Request,
-  response: Response
-) => {
+const createNote = async (request: Request, response: Response) => {
   try {
-     const userId = (request as any).user?.id;
-    if(!userId)  return response.status(403).json({
-        success:false,
-        message:"Invalid input"
-    })
-    const { applicationId, content } = request.body;
+    const userId = (request as any).user?.id;
+    if (!userId)
+      return response.status(403).json({
+        success: false,
+        message: "Invalid input",
+      });
+    const applicationId = request.params.applicationId;
+    const { content } = request.body;
 
     // 🔐 ensure application belongs to user
     const application = await applicationServices.getApplicationById(
+      //@ts-ignore
       applicationId,
-      userId
+      userId,
     );
 
     if (!application) {
@@ -182,7 +185,6 @@ const getApplicationById = async (request: Request, response: Response) => {
       success: true,
       data: note,
     });
-
   } catch (error) {
     console.error("Create Note Error:", error);
 
@@ -193,17 +195,14 @@ const getApplicationById = async (request: Request, response: Response) => {
   }
 };
 
-
-const updateNote = async (
-  request: Request,
-  response: Response
-) => {
+const updateNote = async (request: Request, response: Response) => {
   try {
     const userId = (request as any).user?.id;
-    if(!userId)  return response.status(403).json({
-        success:false,
-        message:"Invalid input"
-    })
+    if (!userId)
+      return response.status(403).json({
+        success: false,
+        message: "Invalid input",
+      });
     const { noteId } = request.params;
     const { content } = request.body;
 
@@ -211,7 +210,7 @@ const updateNote = async (
       //@ts-ignore
       noteId,
       userId,
-      content
+      content,
     );
 
     if (!updatedNote) {
@@ -225,7 +224,6 @@ const updateNote = async (
       success: true,
       data: updatedNote,
     });
-
   } catch (error) {
     console.error("Update Note Error:", error);
 
@@ -236,19 +234,15 @@ const updateNote = async (
   }
 };
 
-
-const deleteNote = async (
-  request: Request,
-  response: Response
-) => {
+const deleteNote = async (request: Request, response: Response) => {
   try {
     const userId = (request as any).user?.id;
     const { noteId } = request.params;
 
     const deleted = await applicationServices.deleteNote(
-        //@ts-ignore
+      //@ts-ignore
       noteId,
-      userId
+      userId,
     );
 
     if (!deleted) {
@@ -262,7 +256,6 @@ const deleteNote = async (
       success: true,
       message: "Note deleted successfully",
     });
-
   } catch (error) {
     console.error("Delete Note Error:", error);
 
@@ -273,20 +266,16 @@ const deleteNote = async (
   }
 };
 
-
-const getAllNotes = async (
-  request: Request,
-  response: Response
-) => {
+const getAllNotes = async (request: Request, response: Response) => {
   try {
     const userId = (request as any).user?.id;
     const { applicationId } = request.params;
 
     // 🔐 ensure application belongs to user
     const application = await applicationServices.getApplicationById(
-        //@ts-ignore
+      //@ts-ignore
       applicationId,
-      userId
+      userId,
     );
 
     if (!application) {
@@ -302,7 +291,6 @@ const getAllNotes = async (
       success: true,
       data: notes,
     });
-
   } catch (error) {
     console.error("Get Notes Error:", error);
 
@@ -320,5 +308,5 @@ export const applicationController = {
   createNote,
   updateNote,
   deleteNote,
-  getAllNotes
+  getAllNotes,
 };
