@@ -8,7 +8,9 @@ import {clerkMiddleware} from "@clerk/express";
 
 import applicationRouter from "./modules/application/application.routes";
 
+import interviewRouter from "./modules/interview/interview.routes"
 
+import sessionRouter from "./modules/session/session.routes";
 
 
 
@@ -21,9 +23,13 @@ export const app=express();
 app.use(cors());
 app.use(express.json());
 app.use(clerkMiddleware());
+
+
 app.use('/api/auth',authRouter);
 app.use('/api/jobs',jobRouter);
 app.use('/api/applications',applicationRouter);
+app.use('/api/interviews',interviewRouter);
+app.use('/api/interviews/:interviewId/sessions',sessionRouter);
 
 
 

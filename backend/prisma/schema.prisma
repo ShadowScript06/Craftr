@@ -26,6 +26,10 @@ model User{
   updateAt DateTime @updatedAt
 
   applications Application[]
+
+  interview Interview[]
+
+  interviewSession InterviewSession[]
 }
 
 model Subscription{
@@ -83,4 +87,107 @@ enum ApplicationStatus{
   INTERVIEW
   REJECTED
   OFFER
+}
+
+
+model Interview {
+  id              String   @id @default(uuid())
+
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  title           String
+  domain          String
+  role            String
+  experience      Int
+
+  durationMinutes Int
+  interviewType   String
+
+  
+  codingEnabled   Boolean  @default(false)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  sessions        InterviewSession[]
+}
+
+
+
+model InterviewSession {
+  id          String @id @default(uuid())
+
+  userId      String
+  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  interviewId  String
+  interview    Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+
+  attempt     Int @default(1)
+
+  status      String
+
+  createdAt   DateTime @default(now())
+  endedAt     DateTime?
+  difficulty  String
+  questions   SessionQuestion[]
+
+  results InterviewSessionResult[]
+}
+
+model SessionQuestion {
+  id            String @id @default(uuid())
+
+  sessionId     String
+  session       InterviewSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  type          String
+
+  question      String
+
+  // THEORY
+  answer        String?
+
+  // CODING
+  language      String?
+  starterCode   String?
+  testCases     Json?
+
+ 
+
+  userAnswer    String?
+  isCorrect     Boolean?
+
+  order Int
+
+  createdAt     DateTime @default(now())
+}
+
+
+
+
+
+
+
+model InterviewSessionResult {
+  id          String @id @default(cuid())
+
+  sessionId   String @unique
+  session     InterviewSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  score       Int        // 0 - 100
+  rating      String     // "Poor", "Average", "Good", "Excellent"
+
+  correctCount Int
+  totalCount   Int
+
+  feedback    String     // overall AI summary
+
+  strengths   String?
+  weaknesses  String?
+
+  timeTaken   Int?       // seconds
+
+  createdAt   DateTime @default(now())
 }

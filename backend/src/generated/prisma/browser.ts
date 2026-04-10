@@ -37,3 +37,23 @@ export type Application = Prisma.ApplicationModel
  * 
  */
 export type Note = Prisma.NoteModel
+/**
+ * Model Interview
+ * 
+ */
+export type Interview = Prisma.InterviewModel
+/**
+ * Model InterviewSession
+ * 
+ */
+export type InterviewSession = Prisma.InterviewSessionModel
+/**
+ * Model SessionQuestion
+ * 
+ */
+export type SessionQuestion = Prisma.SessionQuestionModel
+/**
+ * Model InterviewSessionResult
+ * 
+ */
+export type InterviewSessionResult = Prisma.InterviewSessionResultModel

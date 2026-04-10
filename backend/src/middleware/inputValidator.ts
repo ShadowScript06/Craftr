@@ -1,21 +1,18 @@
-
-
 import { Request, Response, NextFunction } from "express";
 
-export const validate=(schema:any)=>(request:Request,response:Response,next:NextFunction)=>{
-   
-        const result=schema.safeParse({
-            body:request.body,
-        })
+export const validate =
+  (schema: any) =>
+  (request: Request, response: Response, next: NextFunction) => {
+    const result = schema.safeParse({
+      body: request.body,
+    });
 
-        console.log(result);
-         if(!result.success){
-            return response.status(400).json({
-                success:false,
-                message:"Invalid input."
-            })
-        }
+    if (!result.success) {
+      return response.status(400).json({
+        success: false,
+        message: "Invalid input.",
+      });
+    }
 
-        next();
-    
-}
+    next();
+  };

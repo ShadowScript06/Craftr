@@ -54,7 +54,11 @@ export const ModelName = {
   User: 'User',
   Subscription: 'Subscription',
   Application: 'Application',
-  Note: 'Note'
+  Note: 'Note',
+  Interview: 'Interview',
+  InterviewSession: 'InterviewSession',
+  SessionQuestion: 'SessionQuestion',
+  InterviewSessionResult: 'InterviewSessionResult'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -121,6 +125,72 @@ export const NoteScalarFieldEnum = {
 export type NoteScalarFieldEnum = (typeof NoteScalarFieldEnum)[keyof typeof NoteScalarFieldEnum]
 
 
+export const InterviewScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  domain: 'domain',
+  role: 'role',
+  experience: 'experience',
+  durationMinutes: 'durationMinutes',
+  interviewType: 'interviewType',
+  codingEnabled: 'codingEnabled',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InterviewScalarFieldEnum = (typeof InterviewScalarFieldEnum)[keyof typeof InterviewScalarFieldEnum]
+
+
+export const InterviewSessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  interviewId: 'interviewId',
+  attempt: 'attempt',
+  status: 'status',
+  createdAt: 'createdAt',
+  endedAt: 'endedAt',
+  difficulty: 'difficulty'
+} as const
+
+export type InterviewSessionScalarFieldEnum = (typeof InterviewSessionScalarFieldEnum)[keyof typeof InterviewSessionScalarFieldEnum]
+
+
+export const SessionQuestionScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  type: 'type',
+  question: 'question',
+  answer: 'answer',
+  language: 'language',
+  starterCode: 'starterCode',
+  testCases: 'testCases',
+  userAnswer: 'userAnswer',
+  isCorrect: 'isCorrect',
+  order: 'order',
+  createdAt: 'createdAt'
+} as const
+
+export type SessionQuestionScalarFieldEnum = (typeof SessionQuestionScalarFieldEnum)[keyof typeof SessionQuestionScalarFieldEnum]
+
+
+export const InterviewSessionResultScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  score: 'score',
+  rating: 'rating',
+  correctCount: 'correctCount',
+  totalCount: 'totalCount',
+  feedback: 'feedback',
+  strengths: 'strengths',
+  weaknesses: 'weaknesses',
+  timeTaken: 'timeTaken',
+  createdAt: 'createdAt'
+} as const
+
+export type InterviewSessionResultScalarFieldEnum = (typeof InterviewSessionResultScalarFieldEnum)[keyof typeof InterviewSessionResultScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -129,10 +199,35 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
 export const QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

@@ -184,6 +184,8 @@ export type UserWhereInput = {
   updateAt?: Prisma.DateTimeFilter<"User"> | Date | string
   subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
   applications?: Prisma.ApplicationListRelationFilter
+  interview?: Prisma.InterviewListRelationFilter
+  interviewSession?: Prisma.InterviewSessionListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -194,6 +196,8 @@ export type UserOrderByWithRelationInput = {
   updateAt?: Prisma.SortOrder
   subscription?: Prisma.SubscriptionOrderByWithRelationInput
   applications?: Prisma.ApplicationOrderByRelationAggregateInput
+  interview?: Prisma.InterviewOrderByRelationAggregateInput
+  interviewSession?: Prisma.InterviewSessionOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -207,6 +211,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   updateAt?: Prisma.DateTimeFilter<"User"> | Date | string
   subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
   applications?: Prisma.ApplicationListRelationFilter
+  interview?: Prisma.InterviewListRelationFilter
+  interviewSession?: Prisma.InterviewSessionListRelationFilter
 }, "id" | "clerkId">
 
 export type UserOrderByWithAggregationInput = {
@@ -239,6 +245,8 @@ export type UserCreateInput = {
   updateAt?: Date | string
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutUserInput
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  interview?: Prisma.InterviewCreateNestedManyWithoutUserInput
+  interviewSession?: Prisma.InterviewSessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -249,6 +257,8 @@ export type UserUncheckedCreateInput = {
   updateAt?: Date | string
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutUserInput
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  interview?: Prisma.InterviewUncheckedCreateNestedManyWithoutUserInput
+  interviewSession?: Prisma.InterviewSessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -259,6 +269,8 @@ export type UserUpdateInput = {
   updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subscription?: Prisma.SubscriptionUpdateOneWithoutUserNestedInput
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  interview?: Prisma.InterviewUpdateManyWithoutUserNestedInput
+  interviewSession?: Prisma.InterviewSessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -269,6 +281,8 @@ export type UserUncheckedUpdateInput = {
   updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutUserNestedInput
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  interview?: Prisma.InterviewUncheckedUpdateManyWithoutUserNestedInput
+  interviewSession?: Prisma.InterviewSessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -364,6 +378,34 @@ export type UserUpdateOneRequiredWithoutApplicationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutApplicationsInput, Prisma.UserUpdateWithoutApplicationsInput>, Prisma.UserUncheckedUpdateWithoutApplicationsInput>
 }
 
+export type UserCreateNestedOneWithoutInterviewInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutInterviewInput, Prisma.UserUncheckedCreateWithoutInterviewInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutInterviewInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutInterviewNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutInterviewInput, Prisma.UserUncheckedCreateWithoutInterviewInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutInterviewInput
+  upsert?: Prisma.UserUpsertWithoutInterviewInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutInterviewInput, Prisma.UserUpdateWithoutInterviewInput>, Prisma.UserUncheckedUpdateWithoutInterviewInput>
+}
+
+export type UserCreateNestedOneWithoutInterviewSessionInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutInterviewSessionInput, Prisma.UserUncheckedCreateWithoutInterviewSessionInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutInterviewSessionInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutInterviewSessionNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutInterviewSessionInput, Prisma.UserUncheckedCreateWithoutInterviewSessionInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutInterviewSessionInput
+  upsert?: Prisma.UserUpsertWithoutInterviewSessionInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutInterviewSessionInput, Prisma.UserUpdateWithoutInterviewSessionInput>, Prisma.UserUncheckedUpdateWithoutInterviewSessionInput>
+}
+
 export type UserCreateWithoutSubscriptionInput = {
   id?: string
   clerkId: string
@@ -371,6 +413,8 @@ export type UserCreateWithoutSubscriptionInput = {
   createdAt?: Date | string
   updateAt?: Date | string
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  interview?: Prisma.InterviewCreateNestedManyWithoutUserInput
+  interviewSession?: Prisma.InterviewSessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSubscriptionInput = {
@@ -380,6 +424,8 @@ export type UserUncheckedCreateWithoutSubscriptionInput = {
   createdAt?: Date | string
   updateAt?: Date | string
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  interview?: Prisma.InterviewUncheckedCreateNestedManyWithoutUserInput
+  interviewSession?: Prisma.InterviewSessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSubscriptionInput = {
@@ -405,6 +451,8 @@ export type UserUpdateWithoutSubscriptionInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  interview?: Prisma.InterviewUpdateManyWithoutUserNestedInput
+  interviewSession?: Prisma.InterviewSessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSubscriptionInput = {
@@ -414,6 +462,8 @@ export type UserUncheckedUpdateWithoutSubscriptionInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  interview?: Prisma.InterviewUncheckedUpdateManyWithoutUserNestedInput
+  interviewSession?: Prisma.InterviewSessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutApplicationsInput = {
@@ -423,6 +473,8 @@ export type UserCreateWithoutApplicationsInput = {
   createdAt?: Date | string
   updateAt?: Date | string
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutUserInput
+  interview?: Prisma.InterviewCreateNestedManyWithoutUserInput
+  interviewSession?: Prisma.InterviewSessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutApplicationsInput = {
@@ -432,6 +484,8 @@ export type UserUncheckedCreateWithoutApplicationsInput = {
   createdAt?: Date | string
   updateAt?: Date | string
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutUserInput
+  interview?: Prisma.InterviewUncheckedCreateNestedManyWithoutUserInput
+  interviewSession?: Prisma.InterviewSessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutApplicationsInput = {
@@ -457,6 +511,8 @@ export type UserUpdateWithoutApplicationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subscription?: Prisma.SubscriptionUpdateOneWithoutUserNestedInput
+  interview?: Prisma.InterviewUpdateManyWithoutUserNestedInput
+  interviewSession?: Prisma.InterviewSessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutApplicationsInput = {
@@ -466,6 +522,128 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+  interview?: Prisma.InterviewUncheckedUpdateManyWithoutUserNestedInput
+  interviewSession?: Prisma.InterviewSessionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutInterviewInput = {
+  id?: string
+  clerkId: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updateAt?: Date | string
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutUserInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  interviewSession?: Prisma.InterviewSessionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutInterviewInput = {
+  id?: string
+  clerkId: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updateAt?: Date | string
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutUserInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  interviewSession?: Prisma.InterviewSessionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutInterviewInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutInterviewInput, Prisma.UserUncheckedCreateWithoutInterviewInput>
+}
+
+export type UserUpsertWithoutInterviewInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutInterviewInput, Prisma.UserUncheckedUpdateWithoutInterviewInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutInterviewInput, Prisma.UserUncheckedCreateWithoutInterviewInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutInterviewInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutInterviewInput, Prisma.UserUncheckedUpdateWithoutInterviewInput>
+}
+
+export type UserUpdateWithoutInterviewInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subscription?: Prisma.SubscriptionUpdateOneWithoutUserNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  interviewSession?: Prisma.InterviewSessionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutInterviewInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  interviewSession?: Prisma.InterviewSessionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutInterviewSessionInput = {
+  id?: string
+  clerkId: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updateAt?: Date | string
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutUserInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  interview?: Prisma.InterviewCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutInterviewSessionInput = {
+  id?: string
+  clerkId: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updateAt?: Date | string
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutUserInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  interview?: Prisma.InterviewUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutInterviewSessionInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutInterviewSessionInput, Prisma.UserUncheckedCreateWithoutInterviewSessionInput>
+}
+
+export type UserUpsertWithoutInterviewSessionInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutInterviewSessionInput, Prisma.UserUncheckedUpdateWithoutInterviewSessionInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutInterviewSessionInput, Prisma.UserUncheckedCreateWithoutInterviewSessionInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutInterviewSessionInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutInterviewSessionInput, Prisma.UserUncheckedUpdateWithoutInterviewSessionInput>
+}
+
+export type UserUpdateWithoutInterviewSessionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subscription?: Prisma.SubscriptionUpdateOneWithoutUserNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  interview?: Prisma.InterviewUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutInterviewSessionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  interview?: Prisma.InterviewUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -475,10 +653,14 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
 
 export type UserCountOutputType = {
   applications: number
+  interview: number
+  interviewSession: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   applications?: boolean | UserCountOutputTypeCountApplicationsArgs
+  interview?: boolean | UserCountOutputTypeCountInterviewArgs
+  interviewSession?: boolean | UserCountOutputTypeCountInterviewSessionArgs
 }
 
 /**
@@ -498,6 +680,20 @@ export type UserCountOutputTypeCountApplicationsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.ApplicationWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountInterviewArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InterviewWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountInterviewSessionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InterviewSessionWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -507,6 +703,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   updateAt?: boolean
   subscription?: boolean | Prisma.User$subscriptionArgs<ExtArgs>
   applications?: boolean | Prisma.User$applicationsArgs<ExtArgs>
+  interview?: boolean | Prisma.User$interviewArgs<ExtArgs>
+  interviewSession?: boolean | Prisma.User$interviewSessionArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -538,6 +736,8 @@ export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = run
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   subscription?: boolean | Prisma.User$subscriptionArgs<ExtArgs>
   applications?: boolean | Prisma.User$applicationsArgs<ExtArgs>
+  interview?: boolean | Prisma.User$interviewArgs<ExtArgs>
+  interviewSession?: boolean | Prisma.User$interviewSessionArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -548,6 +748,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     subscription: Prisma.$SubscriptionPayload<ExtArgs> | null
     applications: Prisma.$ApplicationPayload<ExtArgs>[]
+    interview: Prisma.$InterviewPayload<ExtArgs>[]
+    interviewSession: Prisma.$InterviewSessionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -951,6 +1153,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   subscription<T extends Prisma.User$subscriptionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$subscriptionArgs<ExtArgs>>): Prisma.Prisma__SubscriptionClient<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   applications<T extends Prisma.User$applicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  interview<T extends Prisma.User$interviewArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$interviewArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InterviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  interviewSession<T extends Prisma.User$interviewSessionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$interviewSessionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InterviewSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1418,6 +1622,54 @@ export type User$applicationsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.ApplicationScalarFieldEnum | Prisma.ApplicationScalarFieldEnum[]
+}
+
+/**
+ * User.interview
+ */
+export type User$interviewArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Interview
+   */
+  select?: Prisma.InterviewSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Interview
+   */
+  omit?: Prisma.InterviewOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InterviewInclude<ExtArgs> | null
+  where?: Prisma.InterviewWhereInput
+  orderBy?: Prisma.InterviewOrderByWithRelationInput | Prisma.InterviewOrderByWithRelationInput[]
+  cursor?: Prisma.InterviewWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InterviewScalarFieldEnum | Prisma.InterviewScalarFieldEnum[]
+}
+
+/**
+ * User.interviewSession
+ */
+export type User$interviewSessionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the InterviewSession
+   */
+  select?: Prisma.InterviewSessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the InterviewSession
+   */
+  omit?: Prisma.InterviewSessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InterviewSessionInclude<ExtArgs> | null
+  where?: Prisma.InterviewSessionWhereInput
+  orderBy?: Prisma.InterviewSessionOrderByWithRelationInput | Prisma.InterviewSessionOrderByWithRelationInput[]
+  cursor?: Prisma.InterviewSessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InterviewSessionScalarFieldEnum | Prisma.InterviewSessionScalarFieldEnum[]
 }
 
 /**
