@@ -4,6 +4,7 @@ import { AuthRequest } from "../../middleware/attachUser";
 
 const createApplication = async (request: AuthRequest, response: Response) => {
   try {
+   
     const userId = (request as any).user?.id;
     if (!userId)
       return response.status(403).json({

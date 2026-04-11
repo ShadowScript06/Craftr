@@ -6,8 +6,9 @@ export const validate =
     const result = schema.safeParse({
       body: request.body,
     });
-
+    
     if (!result.success) {
+      console.log(result);
       return response.status(400).json({
         success: false,
         message: "Invalid input.",
