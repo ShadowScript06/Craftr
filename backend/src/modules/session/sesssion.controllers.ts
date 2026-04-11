@@ -329,39 +329,42 @@ export const submitAnswer = async (
 };
 
 
-export const runCode = async (req: any, res: Response) => {
-  try {
-    const { interviewId, sessionId ,questionId} = req.params as any;
-    const {  code, language } = req.body;
-    const userId = (req as any).user?.id;
+// export const runCode = async (req: any, res: Response) => {
+//   try {
+//     const { interviewId, sessionId ,questionId} = req.params as any;
+//     const {  code, language } = req.body;
+//     const userId = (req as any).user?.id;
 
     
-    if (!userId) {
-      return res.status(401).json({ success: false, message: "Unauthorized" });
-    }
+//     if (!userId) {
+//       return res.status(401).json({ success: false, message: "Unauthorized" });
+//     }
 
-    const result = await sessionServices.runCode({
-      interviewId,
-      sessionId,
-      questionId,
-      userId,
-      code,
-      language,
-    });
+//     const result = await sessionServices.runCode({
+//       interviewId,
+//       sessionId,
+//       questionId,
+//       userId,
+//       code,
+//       language,
+//     });
 
-    return res.status(200).json({
-      success: true,
-      data: result,
-    });
+//     return res.status(200).json({
+//       success: true,
+//       data: result,
+//     });
 
-  } catch (error: any) {
-    console.log(error);
-    console.error("RUN CODE ERROR:", error.message);
+//   } catch (error: any) {
+//     console.log(error);
+//     console.error("RUN CODE ERROR:", error.message);
 
-    return res.status(400).json({
-      success: false,
-      message: error.message,
-    });
-  }
-};
-export const sessioncontroller={startSession,endSession,retrySession,getSessions,getSessionById,deleteSession,submitAnswer,runCode}
+//     return res.status(400).json({
+//       success: false,
+//       message: error.message,
+//     });
+//   }
+// };
+
+
+
+export const sessioncontroller={startSession,endSession,retrySession,getSessions,getSessionById,deleteSession,submitAnswer}

@@ -9,6 +9,8 @@ import JobDetail from "./pages/JobDetail";
 import ApplicationTracker from "./pages/ApplicationTracker";
 import ApplicationDetail from "./pages/ApplicationDetail";
 
+import CreateInterviewPage from "./pages/CreateInterviewPage";
+
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/applicationtracker" element={<ApplicationTracker/>}/>
 
         <Route path="/applicationtracker/:id" element={<ApplicationDetail />} />
+
+        <Route  path="/interviews" element={<CreateInterviewPage/>}/>
       </Routes>
     </div>
   );

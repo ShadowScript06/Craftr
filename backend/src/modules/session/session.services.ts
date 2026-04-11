@@ -2,7 +2,7 @@ import { prisma } from "../../prisma/client";
 // AI layer
 import { aiServices } from "../ai/ai.service";
 import axios from "axios";
-const dotenv =require('dotenv');
+const dotenv = require("dotenv");
 
 dotenv.config();
 
@@ -46,11 +46,9 @@ const startSession = async ({
     experience: interview.experience,
     durationMinutes: interview.durationMinutes,
   });
-  
 
   // 2. Run DB operations atomically
   const result = await prisma.$transaction(async (tx) => {
-    
     // create session
     const session = await tx.interviewSession.create({
       data: {
@@ -69,9 +67,6 @@ const startSession = async ({
         question: q.question,
         type: q.type,
         answer: q.answer || "",
-        language: q.language || null,
-        starterCode: q.starterCode || "",
-        testCases: q.testCases || [],
         order: index + 1,
       })),
     });
@@ -93,14 +88,12 @@ const startSession = async ({
   return result;
 };
 
-
-
-const endSession=async({
+const endSession = async ({
   interviewId,
   sessionId,
   userId,
-}: EndSessionInput)=>{
-   // 1. Validate session
+}: EndSessionInput) => {
+  // 1. Validate session
   const session = await prisma.interviewSession.findFirst({
     where: {
       id: sessionId,
@@ -132,7 +125,6 @@ const endSession=async({
     expectedAnswer: q.answer,
     userAnswer: q.userAnswer,
     type: q.type,
-    testCases: q.testCases,
   }));
 
   // 4. Call AI evaluation
@@ -150,7 +142,6 @@ const endSession=async({
 
   // 5. Atomic DB transaction
   const result = await prisma.$transaction(async (tx) => {
-
     // create result
     const sessionResult = await tx.interviewSessionResult.create({
       data: {
@@ -179,8 +170,7 @@ const endSession=async({
   });
 
   return result;
-}
-
+};
 
 const retrySession = async ({
   interviewId,
@@ -189,7 +179,6 @@ const retrySession = async ({
   interviewId: string;
   userId: string;
 }) => {
-
   // 1. Validate interview
   const interview = await prisma.interview.findUnique({
     where: { id: interviewId },
@@ -232,7 +221,7 @@ const retrySession = async ({
     difficulty: "MEDIUM", // or pass dynamically
     experience: interview.experience,
     durationMinutes: interview.durationMinutes,
-    previousQuestions: previousQuestions.map(q => q.question),
+    previousQuestions: previousQuestions.map((q) => q.question),
   });
 
   if (!questions.length) {
@@ -241,7 +230,6 @@ const retrySession = async ({
 
   // 5. Atomic DB transaction
   const result = await prisma.$transaction(async (tx) => {
-
     // create new session
     const session = await tx.interviewSession.create({
       data: {
@@ -260,9 +248,6 @@ const retrySession = async ({
         question: q.question,
         type: q.type,
         answer: q.answer || "",
-        language: q.language || null,
-        starterCode: q.starterCode || "",
-        testCases: q.testCases || [],
         order: index + 1,
       })),
     });
@@ -284,8 +269,6 @@ const retrySession = async ({
   return result;
 };
 
-
-
 const getSessionsByInterview = async ({
   interviewId,
   userId,
@@ -293,7 +276,6 @@ const getSessionsByInterview = async ({
   interviewId: string;
   userId: string;
 }) => {
-
   const sessions = await prisma.interviewSession.findMany({
     where: {
       interviewId,
@@ -313,22 +295,21 @@ const getSessionsByInterview = async ({
   });
 
   const formatted = sessions.map((s) => ({
-  sessionId: s.id,
-  attempt: s.attempt,
-  status: s.status,
-  totalQuestions: s._count.questions,
+    sessionId: s.id,
+    attempt: s.attempt,
+    status: s.status,
+    totalQuestions: s._count.questions,
 
-  // ✅ FIX for array
-  score: s.results[0]?.score ?? null,
-  rating: s.results[0]?.rating ?? null,
+    // ✅ FIX for array
+    score: s.results[0]?.score ?? null,
+    rating: s.results[0]?.rating ?? null,
 
-  createdAt: s.createdAt,
-  endedAt: s.endedAt,
-}));
+    createdAt: s.createdAt,
+    endedAt: s.endedAt,
+  }));
 
   return formatted;
 };
-
 
 const getSessionById = async ({
   interviewId,
@@ -339,7 +320,6 @@ const getSessionById = async ({
   sessionId: string;
   userId: string;
 }) => {
-
   const session = await prisma.interviewSession.findFirst({
     where: {
       id: sessionId,
@@ -373,8 +353,6 @@ const getSessionById = async ({
   };
 };
 
-
-
 const deleteSession = async ({
   sessionId,
   interviewId,
@@ -384,7 +362,6 @@ const deleteSession = async ({
   interviewId: string;
   userId: string;
 }) => {
-
   // 1. Check session ownership
   const session = await prisma.interviewSession.findFirst({
     where: {
@@ -410,7 +387,6 @@ const deleteSession = async ({
   };
 };
 
-
 const submitAnswer = async ({
   sessionId,
   questionId,
@@ -422,7 +398,6 @@ const submitAnswer = async ({
   userId: string;
   answer: string;
 }) => {
-
   // 1. Validate session ownership
   const session = await prisma.interviewSession.findFirst({
     where: {
@@ -456,110 +431,106 @@ const submitAnswer = async ({
   return updated;
 };
 
+// export const runCode = async ({
+//   interviewId,
+//   sessionId,
+//   questionId,
+//   userId,
+//   code,
+//   language,
+// }: {
+//   interviewId: string;
+//   sessionId: string;
+//   questionId: string;
+//   userId: string;
+//   code: string;
+//   language: string;
+// }) => {
+//   // 🔒 1. Validate session ownership
+//   const session = await prisma.interviewSession.findFirst({
+//     where: {
+//       id: sessionId,
+//       interviewId,
+//       userId,
+//     },
+//   });
+
+//   if (!session) {
+//     throw new Error("Unauthorized or session not found");
+//   }
+
+//   // 🔒 2. Validate question belongs to session
+//   const question = await prisma.sessionQuestion.findFirst({
+//     where: {
+//       id: questionId,
+//       sessionId,
+//     },
+//   });
+
+//   if (!question) {
+//     throw new Error("Question not found for this session");
+//   }
+
+//   const testCases = question.testCases as {
+//     input: string;
+//     output: string;
+//   }[];
+
+//   if (!testCases || testCases.length === 0) {
+//     throw new Error("No test cases found");
+//   }
+
+//   let passed = 0;
+//   const results = [];
+
+//   for (const tc of testCases) {
+//     const wrappedCode = `${code}
+
+//     const input = ${JSON.stringify(tc.input)};
+//     const result = typeof solution === "function" ? solution(input) : null;
+
+//       if (result !== undefined) {
+//         console.log(result);
+//       }
+// `;
 
 
+//     const PISTON_URL = "http://localhost:3000/execute";
+//     const response = await axios.post(PISTON_URL, {
+//       language,
+//       version: "*",
+//       files: [{ content: wrappedCode }],
+//     });
 
+//     const actual = response.data.run.output.trim();
+//     const expected = String(tc.output).trim();
 
+//     const isPassed = actual === expected;
 
+//     if (isPassed) passed++;
 
+//     results.push({
+//       input: tc.input,
+//       expected,
+//       actual,
+//       passed: isPassed,
+//     });
+//   }
 
+//   return {
+//     passed,
+//     total: testCases.length,
+//     results,
+//   };
+// };
 
-export const runCode = async ({
-  interviewId,
-  sessionId,
-  questionId,
-  userId,
-  code,
-  language,
-}: {
-  interviewId: string;
-  sessionId: string;
-  questionId: string;
-  userId: string;
-  code: string;
-  language: string;
-}) => {
-
-  // 🔒 1. Validate session ownership
-  const session = await prisma.interviewSession.findFirst({
-    where: {
-      id: sessionId,
-      interviewId,
-      userId,
-    },
-  });
-
-  if (!session) {
-    throw new Error("Unauthorized or session not found");
-  }
-
-  // 🔒 2. Validate question belongs to session
-  const question = await prisma.sessionQuestion.findFirst({
-    where: {
-      id: questionId,
-      sessionId,
-    },
-  });
-
-  if (!question) {
-    throw new Error("Question not found for this session");
-  }
-
-  const testCases = question.testCases as {
-    input: string;
-    output: string;
-  }[];
-
-  if (!testCases || testCases.length === 0) {
-    throw new Error("No test cases found");
-  }
-
-  let passed = 0;
-  const results = [];
-
-  for (const tc of testCases) {
-    const wrappedCode = `
-${code}
-
-const input = ${JSON.stringify(tc.input)};
-const result = typeof solution === "function" ? solution(input) : null;
-
-if (result !== undefined) {
-  console.log(result);
-}
-`;
-    const PISTON_URL=process.env.PISTON_URL||"";
-    const response = await axios.post(PISTON_URL, {
-      language,
-      version: "*",
-      files: [{ content: wrappedCode }],
-    });
-
-    const actual = response.data.run.output.trim();
-    const expected = String(tc.output).trim();
-
-    const isPassed = actual === expected;
-
-    if (isPassed) passed++;
-
-    results.push({
-      input: tc.input,
-      expected,
-      actual,
-      passed: isPassed,
-    });
-  }
-
-  return {
-    passed,
-    total: testCases.length,
-    results,
-  };
+export const sessionServices = {
+  startSession,
+  endSession,
+  retrySession,
+  getSessionsByInterview,
+  getSessionById,
+  deleteSession,
+  submitAnswer,
+  
 };
-
-
-
-
-
-
-export const sessionServices = { startSession,endSession ,retrySession,getSessionsByInterview,getSessionById,deleteSession,submitAnswer,runCode};

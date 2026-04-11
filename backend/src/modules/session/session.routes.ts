@@ -49,8 +49,8 @@ router.post("/:sessionId/questions/:questionId/answer",requireAuth(),
   attachUser, sessioncontroller.submitAnswer);
 
 // run code
-router.post("/:sessionId/questions/:questionId/run-code",requireAuth(),
-  attachUser, sessioncontroller.runCode);
+// router.post("/:sessionId/questions/:questionId/run-code",requireAuth(),
+//   attachUser, sessioncontroller.runCode);
 
 
 export default router;

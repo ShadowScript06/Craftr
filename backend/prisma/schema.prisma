@@ -149,10 +149,7 @@ model SessionQuestion {
   // THEORY
   answer        String?
 
-  // CODING
-  language      String?
-  starterCode   String?
-  testCases     Json?
+ 
 
  
 

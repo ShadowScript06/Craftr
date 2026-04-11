@@ -52,11 +52,9 @@ QUESTION COUNT RULE:
 ---
 
 DOMAIN RULES:
-- If domain = "TECH":
-  → Mix THEORY and CODING questions
-  → At least 40% must be CODING questions
-- If domain != "TECH":
-  → ONLY THEORY questions
+  → ONLY THEORY questions 
+    Questions should test candidates theoritical knowledge  but mostly his real world understanding and practical application
+
 
 ---
 
@@ -73,7 +71,7 @@ STRICT OUTPUT RULES:
 OUTPUT STRUCTURE (MUST FOLLOW EXACTLY):
 
 {
-  "type": "THEORY" | "CODING",
+  "type": "THEORY" ,
   "question": "string",
   "answer": "string",
   "language": "javascript | python | java | cpp | null",
@@ -102,36 +100,15 @@ THEORY QUESTION RULES:
 
 ---
 
-CODING QUESTION RULES (VERY IMPORTANT):
-- type = "CODING"
-- answer = approach explanation (3–6 lines)
-- language must be one of: javascript, python, java, cpp
-- starterCode must contain ONLY function skeleton (no solution)
-- testCases MUST be meaningful and cover:
-  1. normal case
-  2. edge case
-  3. failure/invalid case (if applicable)
 
-Each test case must include:
-- input
-- output
-- explanation (why this case exists)
 
 ---
 
-TEST CASE QUALITY RULES:
-- Must be realistic (not random values)
-- Must validate correctness of solution
-- Must include at least 3 test cases per coding question
-- Must include edge cases (empty input, 0, negative, large input where applicable)
-- Output must be exact expected result
 
----
 
 ABSOLUTE RULES:
 - NEVER return null anywhere
 - NEVER skip fields
-- ALWAYS generate test cases for CODING questions
 - ALWAYS return valid JSON array
 - If unsure, generate best possible value instead of null`
 
@@ -207,10 +184,7 @@ EVALUATION RULES:
 - Check correctness, clarity, depth
 - Partial answers = partial credit
 
-2. CODING:
-- Evaluate logic correctness
-- Validate against test cases mentally
-- Focus on correctness + approach
+
 
 ---
 
@@ -380,8 +354,7 @@ QUESTION COUNT:
 ---
 
 DOMAIN RULES:
-- TECH → THEORY + CODING (40% coding)
-- NON-TECH → ONLY THEORY
+ ONLY THEORY QUESTIONS
 
 ---
 

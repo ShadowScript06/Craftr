@@ -40,8 +40,6 @@ export type SessionQuestionMinAggregateOutputType = {
   type: string | null
   question: string | null
   answer: string | null
-  language: string | null
-  starterCode: string | null
   userAnswer: string | null
   isCorrect: boolean | null
   order: number | null
@@ -54,8 +52,6 @@ export type SessionQuestionMaxAggregateOutputType = {
   type: string | null
   question: string | null
   answer: string | null
-  language: string | null
-  starterCode: string | null
   userAnswer: string | null
   isCorrect: boolean | null
   order: number | null
@@ -68,9 +64,6 @@ export type SessionQuestionCountAggregateOutputType = {
   type: number
   question: number
   answer: number
-  language: number
-  starterCode: number
-  testCases: number
   userAnswer: number
   isCorrect: number
   order: number
@@ -93,8 +86,6 @@ export type SessionQuestionMinAggregateInputType = {
   type?: true
   question?: true
   answer?: true
-  language?: true
-  starterCode?: true
   userAnswer?: true
   isCorrect?: true
   order?: true
@@ -107,8 +98,6 @@ export type SessionQuestionMaxAggregateInputType = {
   type?: true
   question?: true
   answer?: true
-  language?: true
-  starterCode?: true
   userAnswer?: true
   isCorrect?: true
   order?: true
@@ -121,9 +110,6 @@ export type SessionQuestionCountAggregateInputType = {
   type?: true
   question?: true
   answer?: true
-  language?: true
-  starterCode?: true
-  testCases?: true
   userAnswer?: true
   isCorrect?: true
   order?: true
@@ -223,9 +209,6 @@ export type SessionQuestionGroupByOutputType = {
   type: string
   question: string
   answer: string | null
-  language: string | null
-  starterCode: string | null
-  testCases: runtime.JsonValue | null
   userAnswer: string | null
   isCorrect: boolean | null
   order: number
@@ -261,9 +244,6 @@ export type SessionQuestionWhereInput = {
   type?: Prisma.StringFilter<"SessionQuestion"> | string
   question?: Prisma.StringFilter<"SessionQuestion"> | string
   answer?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
-  language?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
-  starterCode?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
-  testCases?: Prisma.JsonNullableFilter<"SessionQuestion">
   userAnswer?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
   isCorrect?: Prisma.BoolNullableFilter<"SessionQuestion"> | boolean | null
   order?: Prisma.IntFilter<"SessionQuestion"> | number
@@ -277,9 +257,6 @@ export type SessionQuestionOrderByWithRelationInput = {
   type?: Prisma.SortOrder
   question?: Prisma.SortOrder
   answer?: Prisma.SortOrderInput | Prisma.SortOrder
-  language?: Prisma.SortOrderInput | Prisma.SortOrder
-  starterCode?: Prisma.SortOrderInput | Prisma.SortOrder
-  testCases?: Prisma.SortOrderInput | Prisma.SortOrder
   userAnswer?: Prisma.SortOrderInput | Prisma.SortOrder
   isCorrect?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -296,9 +273,6 @@ export type SessionQuestionWhereUniqueInput = Prisma.AtLeast<{
   type?: Prisma.StringFilter<"SessionQuestion"> | string
   question?: Prisma.StringFilter<"SessionQuestion"> | string
   answer?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
-  language?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
-  starterCode?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
-  testCases?: Prisma.JsonNullableFilter<"SessionQuestion">
   userAnswer?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
   isCorrect?: Prisma.BoolNullableFilter<"SessionQuestion"> | boolean | null
   order?: Prisma.IntFilter<"SessionQuestion"> | number
@@ -312,9 +286,6 @@ export type SessionQuestionOrderByWithAggregationInput = {
   type?: Prisma.SortOrder
   question?: Prisma.SortOrder
   answer?: Prisma.SortOrderInput | Prisma.SortOrder
-  language?: Prisma.SortOrderInput | Prisma.SortOrder
-  starterCode?: Prisma.SortOrderInput | Prisma.SortOrder
-  testCases?: Prisma.SortOrderInput | Prisma.SortOrder
   userAnswer?: Prisma.SortOrderInput | Prisma.SortOrder
   isCorrect?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -335,9 +306,6 @@ export type SessionQuestionScalarWhereWithAggregatesInput = {
   type?: Prisma.StringWithAggregatesFilter<"SessionQuestion"> | string
   question?: Prisma.StringWithAggregatesFilter<"SessionQuestion"> | string
   answer?: Prisma.StringNullableWithAggregatesFilter<"SessionQuestion"> | string | null
-  language?: Prisma.StringNullableWithAggregatesFilter<"SessionQuestion"> | string | null
-  starterCode?: Prisma.StringNullableWithAggregatesFilter<"SessionQuestion"> | string | null
-  testCases?: Prisma.JsonNullableWithAggregatesFilter<"SessionQuestion">
   userAnswer?: Prisma.StringNullableWithAggregatesFilter<"SessionQuestion"> | string | null
   isCorrect?: Prisma.BoolNullableWithAggregatesFilter<"SessionQuestion"> | boolean | null
   order?: Prisma.IntWithAggregatesFilter<"SessionQuestion"> | number
@@ -349,9 +317,6 @@ export type SessionQuestionCreateInput = {
   type: string
   question: string
   answer?: string | null
-  language?: string | null
-  starterCode?: string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: string | null
   isCorrect?: boolean | null
   order: number
@@ -365,9 +330,6 @@ export type SessionQuestionUncheckedCreateInput = {
   type: string
   question: string
   answer?: string | null
-  language?: string | null
-  starterCode?: string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: string | null
   isCorrect?: boolean | null
   order: number
@@ -379,9 +341,6 @@ export type SessionQuestionUpdateInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   question?: Prisma.StringFieldUpdateOperationsInput | string
   answer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  starterCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isCorrect?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -395,9 +354,6 @@ export type SessionQuestionUncheckedUpdateInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   question?: Prisma.StringFieldUpdateOperationsInput | string
   answer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  starterCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isCorrect?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -410,9 +366,6 @@ export type SessionQuestionCreateManyInput = {
   type: string
   question: string
   answer?: string | null
-  language?: string | null
-  starterCode?: string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: string | null
   isCorrect?: boolean | null
   order: number
@@ -424,9 +377,6 @@ export type SessionQuestionUpdateManyMutationInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   question?: Prisma.StringFieldUpdateOperationsInput | string
   answer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  starterCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isCorrect?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -439,9 +389,6 @@ export type SessionQuestionUncheckedUpdateManyInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   question?: Prisma.StringFieldUpdateOperationsInput | string
   answer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  starterCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isCorrect?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -464,9 +411,6 @@ export type SessionQuestionCountOrderByAggregateInput = {
   type?: Prisma.SortOrder
   question?: Prisma.SortOrder
   answer?: Prisma.SortOrder
-  language?: Prisma.SortOrder
-  starterCode?: Prisma.SortOrder
-  testCases?: Prisma.SortOrder
   userAnswer?: Prisma.SortOrder
   isCorrect?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -483,8 +427,6 @@ export type SessionQuestionMaxOrderByAggregateInput = {
   type?: Prisma.SortOrder
   question?: Prisma.SortOrder
   answer?: Prisma.SortOrder
-  language?: Prisma.SortOrder
-  starterCode?: Prisma.SortOrder
   userAnswer?: Prisma.SortOrder
   isCorrect?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -497,8 +439,6 @@ export type SessionQuestionMinOrderByAggregateInput = {
   type?: Prisma.SortOrder
   question?: Prisma.SortOrder
   answer?: Prisma.SortOrder
-  language?: Prisma.SortOrder
-  starterCode?: Prisma.SortOrder
   userAnswer?: Prisma.SortOrder
   isCorrect?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -564,9 +504,6 @@ export type SessionQuestionCreateWithoutSessionInput = {
   type: string
   question: string
   answer?: string | null
-  language?: string | null
-  starterCode?: string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: string | null
   isCorrect?: boolean | null
   order: number
@@ -578,9 +515,6 @@ export type SessionQuestionUncheckedCreateWithoutSessionInput = {
   type: string
   question: string
   answer?: string | null
-  language?: string | null
-  starterCode?: string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: string | null
   isCorrect?: boolean | null
   order: number
@@ -622,9 +556,6 @@ export type SessionQuestionScalarWhereInput = {
   type?: Prisma.StringFilter<"SessionQuestion"> | string
   question?: Prisma.StringFilter<"SessionQuestion"> | string
   answer?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
-  language?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
-  starterCode?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
-  testCases?: Prisma.JsonNullableFilter<"SessionQuestion">
   userAnswer?: Prisma.StringNullableFilter<"SessionQuestion"> | string | null
   isCorrect?: Prisma.BoolNullableFilter<"SessionQuestion"> | boolean | null
   order?: Prisma.IntFilter<"SessionQuestion"> | number
@@ -636,9 +567,6 @@ export type SessionQuestionCreateManySessionInput = {
   type: string
   question: string
   answer?: string | null
-  language?: string | null
-  starterCode?: string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: string | null
   isCorrect?: boolean | null
   order: number
@@ -650,9 +578,6 @@ export type SessionQuestionUpdateWithoutSessionInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   question?: Prisma.StringFieldUpdateOperationsInput | string
   answer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  starterCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isCorrect?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -664,9 +589,6 @@ export type SessionQuestionUncheckedUpdateWithoutSessionInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   question?: Prisma.StringFieldUpdateOperationsInput | string
   answer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  starterCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isCorrect?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -678,9 +600,6 @@ export type SessionQuestionUncheckedUpdateManyWithoutSessionInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   question?: Prisma.StringFieldUpdateOperationsInput | string
   answer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  starterCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  testCases?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   userAnswer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isCorrect?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
@@ -695,9 +614,6 @@ export type SessionQuestionSelect<ExtArgs extends runtime.Types.Extensions.Inter
   type?: boolean
   question?: boolean
   answer?: boolean
-  language?: boolean
-  starterCode?: boolean
-  testCases?: boolean
   userAnswer?: boolean
   isCorrect?: boolean
   order?: boolean
@@ -711,9 +627,6 @@ export type SessionQuestionSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   type?: boolean
   question?: boolean
   answer?: boolean
-  language?: boolean
-  starterCode?: boolean
-  testCases?: boolean
   userAnswer?: boolean
   isCorrect?: boolean
   order?: boolean
@@ -727,9 +640,6 @@ export type SessionQuestionSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   type?: boolean
   question?: boolean
   answer?: boolean
-  language?: boolean
-  starterCode?: boolean
-  testCases?: boolean
   userAnswer?: boolean
   isCorrect?: boolean
   order?: boolean
@@ -743,16 +653,13 @@ export type SessionQuestionSelectScalar = {
   type?: boolean
   question?: boolean
   answer?: boolean
-  language?: boolean
-  starterCode?: boolean
-  testCases?: boolean
   userAnswer?: boolean
   isCorrect?: boolean
   order?: boolean
   createdAt?: boolean
 }
 
-export type SessionQuestionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sessionId" | "type" | "question" | "answer" | "language" | "starterCode" | "testCases" | "userAnswer" | "isCorrect" | "order" | "createdAt", ExtArgs["result"]["sessionQuestion"]>
+export type SessionQuestionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sessionId" | "type" | "question" | "answer" | "userAnswer" | "isCorrect" | "order" | "createdAt", ExtArgs["result"]["sessionQuestion"]>
 export type SessionQuestionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   session?: boolean | Prisma.InterviewSessionDefaultArgs<ExtArgs>
 }
@@ -774,9 +681,6 @@ export type $SessionQuestionPayload<ExtArgs extends runtime.Types.Extensions.Int
     type: string
     question: string
     answer: string | null
-    language: string | null
-    starterCode: string | null
-    testCases: runtime.JsonValue | null
     userAnswer: string | null
     isCorrect: boolean | null
     order: number
@@ -1210,9 +1114,6 @@ export interface SessionQuestionFieldRefs {
   readonly type: Prisma.FieldRef<"SessionQuestion", 'String'>
   readonly question: Prisma.FieldRef<"SessionQuestion", 'String'>
   readonly answer: Prisma.FieldRef<"SessionQuestion", 'String'>
-  readonly language: Prisma.FieldRef<"SessionQuestion", 'String'>
-  readonly starterCode: Prisma.FieldRef<"SessionQuestion", 'String'>
-  readonly testCases: Prisma.FieldRef<"SessionQuestion", 'Json'>
   readonly userAnswer: Prisma.FieldRef<"SessionQuestion", 'String'>
   readonly isCorrect: Prisma.FieldRef<"SessionQuestion", 'Boolean'>
   readonly order: Prisma.FieldRef<"SessionQuestion", 'Int'>
