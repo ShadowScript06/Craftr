@@ -24,7 +24,7 @@ interface Interview {
 }
 
 interface Session {
-  id: string;
+  sessionId: string;
   userId: string;
   interviewId: string;
   attempt: number;
@@ -212,6 +212,7 @@ export default function InterviewDetail() {
   const [isCreatingSession, setCreatingSession] = useState<boolean>(false);
   const [isRetryingSession, setRetryingSession] = useState<boolean>(false);
   const [isEndingSession, setEndingSession] = useState<boolean>(false);
+  const [isDeletingSession, setDeletingSession] = useState<boolean>(false);
   const [difficulty, setDifficulty] = useState<string>("easy");
   const [toast, setToast] = useState<string | null>(null);
   const [selectedResult, setSelectedResult] = useState<SessionResult | null>(
@@ -228,6 +229,7 @@ export default function InterviewDetail() {
     setTimeout(() => setToast(null), 3000);
   };
 
+ 
   async function fetchInterview() {
     try {
       const token = await getToken();
@@ -274,18 +276,70 @@ export default function InterviewDetail() {
     }
   }
 
+  async function handleDeleteSession(sessionId: string) {
+    try {
+      setDeletingSession(true);
+      const token = await getToken();
+      const res = await axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/interviews/${id}/sessions/${sessionId}`,
+        { headers: { Authorization: `Bearer ${token}` } },
+      );
+
+      const filtered = sessions.filter((session) => {
+        return session.sessionId !== sessionId;
+      });
+
+      setSessions(filtered);
+
+      showToast(`Session : ${sessionId} deleted succesfully.`)
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setDeletingSession(false);
+    }
+  }
+
   async function handleRetrySession(sessionId: string) {
     try {
       setRetryingSession(true);
+      const token = await getToken();
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/interviews/${id}/sessions/${sessionId}/retry`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } },
+      );
+
+      const data = res.data.data;
+      navigate(`session/:${data.sessionId}`);
     } catch (error) {
       console.log(error);
     } finally {
       setRetryingSession(false);
     }
   }
+
   async function handleEndSession(sessionId: string) {
     try {
       setEndingSession(true);
+      const token = await getToken();
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/interviews/${id}/sessions/${sessionId}/end`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } },
+      );
+      showToast("Session ended.");
+
+      const newArray=sessions.map((session)=>{
+        if(session.sessionId===sessionId){
+            return {...session,status:"COMPLETED"}
+        }else{
+            return session;
+        }
+      });
+
+      setSessions(newArray);
+
+
     } catch (error) {
       console.log(error);
     } finally {
@@ -294,20 +348,23 @@ export default function InterviewDetail() {
   }
 
   async function handleViewResult(sessionId: string) {
-  try {
-    const token = await getToken();
-    const res = await axios.get(
-      `${import.meta.env.VITE_BACKEND_URL}/sessions/${sessionId}/result`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+    try {
+      setIsFetchingResult(true);
+      const token = await getToken();
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/interviews/${id}/sessions/${sessionId}/result`,
+        { headers: { Authorization: `Bearer ${token}` } },
+      );
 
-    setSelectedResult(res.data.data);
-    setIsResultOpen(true);
-  } catch (error) {
-    console.log(error);
-    showToast("Failed to fetch result");
+      setSelectedResult(res.data.data);
+      setIsResultOpen(true);
+    } catch (error) {
+      console.log(error);
+      showToast("Failed to fetch result");
+    } finally {
+      setIsFetchingResult(false);
+    }
   }
-}
 
   useEffect(() => {
     async function load() {
@@ -451,6 +508,38 @@ export default function InterviewDetail() {
           </div>
           <p className="text-sm font-semibold text-slate-400">
             Fetching Result
+          </p>
+        </motion.div>
+      </div>
+    );
+
+  // ── fetching Result overlay ──
+  if (isDeletingSession)
+    return (
+      <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 flex items-center justify-center font-sans">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="flex flex-col items-center gap-4"
+        >
+          <div className="flex gap-2">
+            {["bg-indigo-400", "bg-violet-400", "bg-emerald-400"].map(
+              (c, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ opacity: [0.3, 1, 0.3], y: [0, -6, 0] }}
+                  transition={{
+                    duration: 0.8,
+                    repeat: Infinity,
+                    delay: i * 0.15,
+                  }}
+                  className={`w-3 h-3 rounded-full ${c}`}
+                />
+              ),
+            )}
+          </div>
+          <p className="text-sm font-semibold text-slate-400">
+            Deleting Session...
           </p>
         </motion.div>
       </div>
@@ -880,47 +969,122 @@ export default function InterviewDetail() {
                       {sessions.map((session, idx) => {
                         const p =
                           SESSION_PALETTES[idx % SESSION_PALETTES.length];
-                        const diffCfg =
-                          DIFFICULTY_CONFIG[
-                            session.difficulty?.toLowerCase()
-                          ] ?? DIFFICULTY_CONFIG.easy;
+
                         const statusColor =
                           STATUS_CONFIG[session.status?.toLowerCase()] ??
                           STATUS_CONFIG.pending;
-                          const isOngoing = session.status === "IN_PROGRESS";
-const isCompleted = session.status === "COMPLETED";
-                        return (
-                          <div className="flex gap-2">
-  {/* Primary Button */}
-  <motion.button
-    whileHover={{ scale: 1.03, y: -1 }}
-    whileTap={{ scale: 0.97 }}
-    onClick={() =>
-      isOngoing
-        ? handleEndSession(session.id)
-        : handleRetrySession(session.id)
-    }
-    className={`flex-1 py-2 rounded-xl text-white text-xs font-bold shadow-md ${p.shadow} transition-all cursor-pointer ${
-      isOngoing
-        ? "bg-linear-to-br from-red-400 to-rose-500"
-        : `bg-linear-to-br ${p.grad}`
-    }`}
-  >
-    {isOngoing ? "End Session →" : "Retry Session →"}
-  </motion.button>
 
-  {/* See Result Button */}
-  {isCompleted && (
-    <motion.button
-      whileHover={{ scale: 1.03, y: -1 }}
-      whileTap={{ scale: 0.97 }}
-      onClick={() => handleViewResult(session.id)}
-      className="px-3 py-2 rounded-xl text-xs font-bold bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all cursor-pointer"
-    >
-      See Result
-    </motion.button>
-  )}
-</div>
+                        const isOngoing = session.status === "IN_PROGRESS";
+                        const isCompleted = session.status === "COMPLETED";
+                        
+                        return (
+                          <div
+                            key={session.sessionId}
+                            className="flex flex-col gap-3"
+                          >
+                            {/* 🔹 SESSION CARD */}
+                            <div className="p-4 rounded-2xl bg-white shadow-sm border border-slate-100 flex flex-col gap-3">
+                              {/* Top Info */}
+                              <div className="flex justify-between items-center">
+                                <div className="text-sm font-semibold text-slate-700">
+                                  Attempt #{session.attempt}
+                                </div>
+
+                                <div className="flex items-center gap-2">
+                                  <div
+                                    className={`text-[10px] px-2 py-1 rounded-full font-bold ${statusColor}`}
+                                  >
+                                    {session.status}
+                                  </div>
+
+                                  {/* 🗑 Delete Button */}
+                                  <button
+                                    onClick={() =>
+                                      handleDeleteSession(session.sessionId)
+                                    }
+                                    className="p-1.5 rounded-lg hover:bg-red-50 transition cursor-pointer"
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      strokeWidth={2}
+                                      stroke="currentColor"
+                                      className="w-4 h-4 text-red-400 hover:text-red-600"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M6 7h12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2m-8 0l1 12a1 1 0 001 1h4a1 1 0 001-1l1-12"
+                                      />
+                                    </svg>
+                                  </button>
+                                </div>
+                              </div>
+
+                              {/* Middle Info */}
+                              <div className="flex justify-between text-xs text-slate-500">
+                                <span>
+                                  {new Date(
+                                    session.createdAt,
+                                  ).toLocaleDateString()}
+                                </span>
+                              </div>
+
+                              {/* Duration Info (if completed) */}
+                              {isCompleted && session.endedAt && (
+                                <div className="text-xs text-slate-400">
+                                  Duration:{" "}
+                                  {Math.floor(
+                                    (new Date(session.endedAt).getTime() -
+                                      new Date(session.createdAt).getTime()) /
+                                      60000,
+                                  )}{" "}
+                                  mins
+                                </div>
+                              )}
+
+                              {/* Buttons */}
+                              <div className="flex gap-2">
+                                <motion.button
+                                  whileHover={{ scale: 1.03, y: -1 }}
+                                  whileTap={{ scale: 0.97 }}
+                                  onClick={() =>
+                                    isOngoing
+                                      ? handleEndSession(session.sessionId)
+                                      : handleRetrySession(session.sessionId)
+                                  }
+                                  className={`flex-1 py-2 rounded-xl text-white text-xs font-bold shadow-md ${p.shadow} transition-all cursor-pointer ${
+                                    isOngoing
+                                      ? "bg-linear-to-br from-red-400 to-rose-500"
+                                      : `bg-linear-to-br ${p.grad}`
+                                  }`}
+                                >
+                                  {isOngoing
+                                    ? "End Session →"
+                                    : "Retry Session →"}
+                                </motion.button>
+
+                                {isCompleted && (
+                                  <motion.button
+                                    whileHover={{ scale: 1.03, y: -1 }}
+                                    whileTap={{ scale: 0.97 }}
+                                    onClick={() =>
+                                      handleViewResult(session.sessionId)
+                                    }
+                                    className="px-3 py-2 rounded-xl text-xs font-bold bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all cursor-pointer"
+                                  >
+                                    See Result
+                                  </motion.button>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* 🔻 Separator */}
+                            {idx !== sessions.length - 1 && (
+                              <div className="h-1 bg-linear-to-r from-transparent via-slate-200 to-transparent my-2" />
+                            )}
+                          </div>
                         );
                       })}
                     </AnimatePresence>
@@ -1016,7 +1180,7 @@ const isCompleted = session.status === "COMPLETED";
                 <div>
                   <span className="text-slate-500 text-xs">Strengths</span>
                   <p className="text-emerald-600 mt-1">
-                    {selectedResult.strength}
+                    {selectedResult.strengths}
                   </p>
                 </div>
 
@@ -1027,10 +1191,7 @@ const isCompleted = session.status === "COMPLETED";
                   </p>
                 </div>
 
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Time Taken</span>
-                  <span>{selectedResult.timetaken}</span>
-                </div>
+                
               </div>
             </motion.div>
           </motion.div>

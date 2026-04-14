@@ -15,7 +15,7 @@ export async function attachUser(
   const auth = getAuth(request);
 
   const clerkId = auth.userId;
-
+  
   if (!clerkId) {
     return response.status(401).json({
       message: "unauthorized",

@@ -431,6 +431,16 @@ const submitAnswer = async ({
   return updated;
 };
 
+
+const getSessionResult=async(sessionId:string)=>{
+  const result=await prisma.interviewSessionResult.findUnique({
+    where:{
+      sessionId
+    }
+  });
+
+  return result;
+}
 // export const runCode = async ({
 //   interviewId,
 //   sessionId,
@@ -532,5 +542,5 @@ export const sessionServices = {
   getSessionById,
   deleteSession,
   submitAnswer,
-  
+  getSessionResult
 };

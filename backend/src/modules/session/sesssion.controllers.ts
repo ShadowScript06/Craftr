@@ -1,24 +1,22 @@
 import { Request, Response } from "express";
 import { sessionServices } from "./session.services";
 
-
-
 interface AuthenticatedRequest extends Request {
   user?: {
     id: string;
   };
 }
 
- const startSession = async (request: Request, response: Response) => {
+const startSession = async (request: Request, response: Response) => {
   try {
     const { interviewId } = request.params as any;
     const userId = (request as any).user.id;
-    const {difficulty}=request.body;
+    const { difficulty } = request.body;
 
     const result = await sessionServices.startSession({
       interviewId,
       userId,
-      difficulty
+      difficulty,
     });
 
     return response.status(201).json({
@@ -34,11 +32,11 @@ interface AuthenticatedRequest extends Request {
   }
 };
 
-
-const endSession =async( request: AuthenticatedRequest,
-  response: Response
-)=>{
-try {
+const endSession = async (
+  request: AuthenticatedRequest,
+  response: Response,
+) => {
+  try {
     const { interviewId, sessionId } = request.params as any;
 
     const userId = request.user?.id;
@@ -70,7 +68,6 @@ try {
       success: true,
       data: result,
     });
-
   } catch (error: any) {
     console.error("END SESSION ERROR:", error.message);
 
@@ -79,19 +76,11 @@ try {
       message: error.message || "Something went wrong",
     });
   }
-}
+};
 
-
-
-
-
-
-
-
-
-export const retrySession= async (
+export const retrySession = async (
   req: AuthenticatedRequest,
-  res: Response
+  res: Response,
 ) => {
   try {
     const { interviewId } = req.params as any;
@@ -124,7 +113,6 @@ export const retrySession= async (
       success: true,
       data: result,
     });
-
   } catch (error: any) {
     console.error("RETRY SESSION ERROR:", error.message);
 
@@ -135,14 +123,7 @@ export const retrySession= async (
   }
 };
 
-
-
-
-
-export const getSessions = async (
-  req: AuthenticatedRequest,
-  res: Response
-) => {
+export const getSessions = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { interviewId } = req.params as any;
     const userId = req.user?.id;
@@ -174,7 +155,6 @@ export const getSessions = async (
       success: true,
       data: sessions,
     });
-
   } catch (error: any) {
     console.error("GET SESSIONS ERROR:", error.message);
 
@@ -185,12 +165,9 @@ export const getSessions = async (
   }
 };
 
-
-
-
 export const getSessionById = async (
   req: AuthenticatedRequest,
-  res: Response
+  res: Response,
 ) => {
   try {
     const { interviewId, sessionId } = req.params as any;
@@ -220,7 +197,6 @@ export const getSessionById = async (
       success: true,
       data: session,
     });
-
   } catch (error: any) {
     console.error("GET SESSION ERROR:", error.message);
 
@@ -231,13 +207,9 @@ export const getSessionById = async (
   }
 };
 
-
-
-
-
 export const deleteSession = async (
   req: AuthenticatedRequest,
-  res: Response
+  res: Response,
 ) => {
   try {
     const { interviewId, sessionId } = req.params as any;
@@ -267,7 +239,6 @@ export const deleteSession = async (
       success: true,
       data: result,
     });
-
   } catch (error: any) {
     console.error("DELETE SESSION ERROR:", error.message);
 
@@ -278,15 +249,7 @@ export const deleteSession = async (
   }
 };
 
-
-
-
-
-
-const submitAnswer = async (
-  req: AuthenticatedRequest,
-  res: Response
-) => {
+const submitAnswer = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { sessionId, questionId } = req.params as any;
     const { answer } = req.body;
@@ -317,7 +280,6 @@ const submitAnswer = async (
       success: true,
       data: result,
     });
-
   } catch (error: any) {
     console.error("SUBMIT ANSWER ERROR:", error.message);
 
@@ -328,10 +290,26 @@ const submitAnswer = async (
   }
 };
 
-const getSessionResult=async(req: AuthenticatedRequest,
-  res: Response)=>{
+const getSessionResult = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const { sessionId } = req.params as any;
+
+    const result = await sessionServices.getSessionResult(sessionId);
+
+    return res.status(200).json({
+      success: true,
+      data: result,
+    });
     
-}
+  } catch (error: any) {
+    console.error("SUBMIT ANSWER ERROR:", error.message);
+
+    return res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 
 // export const runCode = async (req: any, res: Response) => {
 //   try {
@@ -339,7 +317,6 @@ const getSessionResult=async(req: AuthenticatedRequest,
 //     const {  code, language } = req.body;
 //     const userId = (req as any).user?.id;
 
-    
 //     if (!userId) {
 //       return res.status(401).json({ success: false, message: "Unauthorized" });
 //     }
@@ -369,6 +346,13 @@ const getSessionResult=async(req: AuthenticatedRequest,
 //   }
 // };
 
-
-
-export const sessioncontroller={startSession,endSession,retrySession,getSessions,getSessionById,deleteSession,submitAnswer,getSessionResult}
+export const sessioncontroller = {
+  startSession,
+  endSession,
+  retrySession,
+  getSessions,
+  getSessionById,
+  deleteSession,
+  submitAnswer,
+  getSessionResult,
+};
