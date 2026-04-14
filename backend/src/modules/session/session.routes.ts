@@ -53,4 +53,7 @@ router.post("/:sessionId/questions/:questionId/answer",requireAuth(),
 //   attachUser, sessioncontroller.runCode);
 
 
+// get Session Result
+router.get('/:sessionId/result',sessioncontroller.getSessionResult);
+
 export default router;

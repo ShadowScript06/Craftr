@@ -10,6 +10,8 @@ import ApplicationTracker from "./pages/ApplicationTracker";
 import ApplicationDetail from "./pages/ApplicationDetail";
 
 import CreateInterviewPage from "./pages/CreateInterviewPage";
+import InterviewDetail from "./pages/InterviewDetail";
+import Session from "./pages/Session";
 
 
 function App() {
@@ -28,6 +30,10 @@ function App() {
         <Route path="/applicationtracker/:id" element={<ApplicationDetail />} />
 
         <Route  path="/interviews" element={<CreateInterviewPage/>}/>
+
+        <Route  path="/interviews/:id" element={<InterviewDetail/>}/>
+
+        <Route  path="/interviews/:id/session/:sessionId" element={<Session/>}/>
       </Routes>
     </div>
   );

@@ -896,6 +896,7 @@ function CreateInterviewPage() {
                             }}
                             whileTap={{ scale: 0.97 }}
                             className={`relative w-full py-2.5 rounded-xl bg-linear-to-br ${p.grad} text-white text-xs font-bold shadow-md ${p.shadow} transition-all duration-200 cursor-pointer`}
+                            onClick={()=>navigate(`${interview.id}`)}
                           >
                             Start Session →
                           </motion.button>

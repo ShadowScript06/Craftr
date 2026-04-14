@@ -134,7 +134,7 @@ function DashBoard() {
   }, [getToken, navigate]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
       <Navbar />
 
       <div className="max-w-5xl mx-auto px-6 py-14 space-y-12">
@@ -162,7 +162,7 @@ function DashBoard() {
 
           <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
             Your Job Search,{" "}
-            <span className="bg-gradient-to-r from-indigo-500 to-violet-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-indigo-500 to-violet-600 bg-clip-text text-transparent">
               Supercharged
             </span>
           </h1>
@@ -208,11 +208,11 @@ function DashBoard() {
               className="relative bg-white/80 backdrop-blur-lg rounded-3xl border border-slate-200/60 shadow-xl shadow-slate-200/30 p-6 flex flex-col gap-5 overflow-hidden"
             >
               {/* Blob accent */}
-              <div className={`absolute -top-10 -right-10 w-36 h-36 rounded-full bg-gradient-to-br ${card.blob} blur-2xl`} />
+              <div className={`absolute -top-10 -right-10 w-36 h-36 rounded-full bg-linear-to-br ${card.blob} blur-2xl`} />
 
               {/* Icon + tag */}
               <div className="relative flex items-start justify-between">
-                <div className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${card.iconBg} flex items-center justify-center text-white shadow-lg ${card.iconShadow}`}>
+                <div className={`w-11 h-11 rounded-2xl bg-linear-to-br ${card.iconBg} flex items-center justify-center text-white shadow-lg ${card.iconShadow}`}>
                   {card.icon}
                 </div>
                 <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ring-1 ${card.tagColor}`}>
@@ -236,13 +236,13 @@ function DashBoard() {
                 whileTap={!card.disabled ? { scale: 0.97 } : {}}
                 disabled={card.disabled}
                 onClick={() => card.route && navigate(card.route)}
-                className={`relative w-full py-2.5 rounded-xl bg-gradient-to-br ${card.ctaStyle} text-white text-xs font-bold shadow-md transition-all duration-200 ${card.disabled ? "opacity-60 cursor-not-allowed text-slate-500" : "cursor-pointer"}`}
+                className={`relative w-full py-2.5 rounded-xl bg-linear-to-br ${card.ctaStyle} text-white text-xs font-bold shadow-md transition-all duration-200 ${card.disabled ? "opacity-60 cursor-not-allowed text-slate-500" : "cursor-pointer"}`}
               >
                 {card.cta}
               </motion.button>
 
               {/* Bottom accent line */}
-              <div className={`absolute bottom-0 left-6 right-6 h-0.5 rounded-full bg-gradient-to-r ${card.iconBg} opacity-20`} />
+              <div className={`absolute bottom-0 left-6 right-6 h-0.5 rounded-full bg-linear-to-r ${card.iconBg} opacity-20`} />
             </motion.div>
           ))}
         </div>

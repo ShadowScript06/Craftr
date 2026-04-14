@@ -283,7 +283,7 @@ export const deleteSession = async (
 
 
 
-export const submitAnswer = async (
+const submitAnswer = async (
   req: AuthenticatedRequest,
   res: Response
 ) => {
@@ -328,6 +328,10 @@ export const submitAnswer = async (
   }
 };
 
+const getSessionResult=async(req: AuthenticatedRequest,
+  res: Response)=>{
+    
+}
 
 // export const runCode = async (req: any, res: Response) => {
 //   try {
@@ -367,4 +371,4 @@ export const submitAnswer = async (
 
 
 
-export const sessioncontroller={startSession,endSession,retrySession,getSessions,getSessionById,deleteSession,submitAnswer}
+export const sessioncontroller={startSession,endSession,retrySession,getSessions,getSessionById,deleteSession,submitAnswer,getSessionResult}
