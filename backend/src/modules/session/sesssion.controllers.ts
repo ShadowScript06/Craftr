@@ -311,6 +311,28 @@ const getSessionResult = async (req: AuthenticatedRequest, res: Response) => {
   }
 };
 
+
+const getSessionQuestions = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const { sessionId } = req.params as any;
+
+    const result = await sessionServices.getSessionQuestions(sessionId);
+
+    return res.status(200).json({
+      success: true,
+      data: result,
+    });
+    
+  } catch (error: any) {
+    console.error("SUBMIT ANSWER ERROR:", error.message);
+
+    return res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 // export const runCode = async (req: any, res: Response) => {
 //   try {
 //     const { interviewId, sessionId ,questionId} = req.params as any;
@@ -355,4 +377,5 @@ export const sessioncontroller = {
   deleteSession,
   submitAnswer,
   getSessionResult,
+  getSessionQuestions
 };

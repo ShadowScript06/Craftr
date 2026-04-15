@@ -57,14 +57,14 @@ const CARDS = [
   tag: "AI Assessment",
   tagColor: "bg-blue-50 text-blue-600 ring-blue-100",
 
-  title: "Mock Interviews",
+  title: "Mock Tests",
   description:
-    "Simulate real interview scenarios with AI. Get structured evaluation, feedback, and performance scoring.",
+    "Simulate real interview questions  with AI, Answer them. Get structured evaluation, feedback, and performance scoring.",
 
-  cta: "Start Interview",
+  cta: "Start Test",
   ctaStyle: "from-blue-500 to-sky-500 shadow-blue-200",
 
-  route: "/interviews",
+  route: "/tests",
   disabled: false,
 
   accentDot: "bg-blue-400",

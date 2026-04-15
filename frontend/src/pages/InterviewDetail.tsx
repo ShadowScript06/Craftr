@@ -42,7 +42,7 @@ interface SessionResult {
   correctCount: string;
   totalCount: string;
   feedback: string;
-  strength: string;
+  strengths: string;
   weaknesses: string;
   timetaken: string;
 }
@@ -268,7 +268,7 @@ export default function InterviewDetail() {
         { headers: { Authorization: `Bearer ${token}` } },
       );
       const data = res.data.data;
-      navigate(`session/:${data.sessionId}`);
+      navigate(`session/${data.sessionId}`);
     } catch (error) {
       console.log(error);
       showToast("Failed to create session. Please try again.");
@@ -310,7 +310,8 @@ export default function InterviewDetail() {
       );
 
       const data = res.data.data;
-      navigate(`session/:${data.sessionId}`);
+      console.log(data);
+      navigate(`session/${data.sessionId}`);
     } catch (error) {
       console.log(error);
     } finally {
@@ -612,7 +613,7 @@ export default function InterviewDetail() {
               Craftr
             </div>
             <div className="text-[10px] font-semibold text-indigo-400 tracking-widest uppercase">
-              AI Interviews
+              AI Tests
             </div>
           </div>
         </div>
@@ -763,7 +764,7 @@ export default function InterviewDetail() {
             >
               <path strokeLinecap="round" d="M19 12H5m7-7-7 7 7 7" />
             </svg>
-            Back to Interviews
+            Back to Tests
           </motion.button>
 
           {loading ? (

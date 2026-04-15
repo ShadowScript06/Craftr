@@ -29,11 +29,11 @@ function App() {
 
         <Route path="/applicationtracker/:id" element={<ApplicationDetail />} />
 
-        <Route  path="/interviews" element={<CreateInterviewPage/>}/>
+        <Route  path="/tests" element={<CreateInterviewPage/>}/>
 
-        <Route  path="/interviews/:id" element={<InterviewDetail/>}/>
+        <Route  path="/tests/:id" element={<InterviewDetail/>}/>
 
-        <Route  path="/interviews/:id/session/:sessionId" element={<Session/>}/>
+        <Route  path="/tests/:id/session/:sessionId" element={<Session/>}/>
       </Routes>
     </div>
   );

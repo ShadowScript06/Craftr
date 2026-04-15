@@ -441,6 +441,23 @@ const getSessionResult=async(sessionId:string)=>{
 
   return result;
 }
+
+
+const getSessionQuestions=async(sessionId:string)=>{
+
+  
+  const result=await prisma.sessionQuestion.
+  findMany({
+    where:{
+      sessionId:sessionId
+    },orderBy:{
+      order:"asc"
+    }
+  });
+
+
+  return result;
+}
 // export const runCode = async ({
 //   interviewId,
 //   sessionId,
@@ -542,5 +559,6 @@ export const sessionServices = {
   getSessionById,
   deleteSession,
   submitAnswer,
-  getSessionResult
+  getSessionResult,
+  getSessionQuestions
 };

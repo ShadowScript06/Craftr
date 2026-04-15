@@ -264,7 +264,7 @@ function CreateInterviewModal({
                 </svg>
               </div>
               <h2 className="text-xl font-black text-slate-900 tracking-tight">
-                New Interview
+                New Test
               </h2>
             </div>
             <p className="text-xs text-slate-400 ml-10">
@@ -293,7 +293,7 @@ function CreateInterviewModal({
         <div className="relative grid grid-cols-2 gap-4 mb-5">
           <div className="col-span-2">
             <Field
-              label="Interview Title"
+              label="Test Title"
               id="title"
               placeholder="e.g. Frontend Round 1…"
               value={title}
@@ -354,7 +354,7 @@ function CreateInterviewModal({
           {/* Type selector */}
           <div className="col-span-2 flex flex-col gap-1.5">
             <label className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-              Interview Type
+              Test Type
             </label>
             <div className="flex gap-2 flex-wrap">
               {[
@@ -541,7 +541,7 @@ function CreateInterviewPage() {
               Craftr
             </div>
             <div className="text-[10px] font-semibold text-indigo-400 tracking-widest uppercase">
-              AI Interviews
+              AI Mock Tests
             </div>
           </div>
         </div>
@@ -564,7 +564,7 @@ function CreateInterviewPage() {
           >
             +
           </motion.span>
-          New Interview
+          New Test
         </motion.button>
 
         {/* Stats grid */}
@@ -668,10 +668,10 @@ function CreateInterviewPage() {
         >
           <div>
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
-              AI Interview Sessions
+              AI Test Sessions
             </h1>
             <p className="text-sm text-slate-400 mt-0.5">
-              Practice, prepare, and ace your next interview
+              Practice, prepare, and ace your next Test
             </p>
           </div>
           <div className="flex gap-2">
@@ -786,7 +786,7 @@ function CreateInterviewPage() {
                     No sessions yet
                   </div>
                   <div className="text-sm text-slate-400 mt-1 mb-6">
-                    Create your first AI interview session to get started
+                    Create your first AI Mock Test session to get started
                   </div>
                   <motion.button
                     whileHover={{
