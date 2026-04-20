@@ -58,7 +58,10 @@ export const ModelName = {
   Interview: 'Interview',
   InterviewSession: 'InterviewSession',
   SessionQuestion: 'SessionQuestion',
-  InterviewSessionResult: 'InterviewSessionResult'
+  InterviewSessionResult: 'InterviewSessionResult',
+  PreparationSession: 'PreparationSession',
+  Topic: 'Topic',
+  PreparationQuestion: 'PreparationQuestion'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -186,6 +189,41 @@ export const InterviewSessionResultScalarFieldEnum = {
 } as const
 
 export type InterviewSessionResultScalarFieldEnum = (typeof InterviewSessionResultScalarFieldEnum)[keyof typeof InterviewSessionResultScalarFieldEnum]
+
+
+export const PreparationSessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  role: 'role',
+  experience: 'experience',
+  description: 'description',
+  createdAt: 'createdAt'
+} as const
+
+export type PreparationSessionScalarFieldEnum = (typeof PreparationSessionScalarFieldEnum)[keyof typeof PreparationSessionScalarFieldEnum]
+
+
+export const TopicScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  sessionId: 'sessionId'
+} as const
+
+export type TopicScalarFieldEnum = (typeof TopicScalarFieldEnum)[keyof typeof TopicScalarFieldEnum]
+
+
+export const PreparationQuestionScalarFieldEnum = {
+  id: 'id',
+  question: 'question',
+  answer: 'answer',
+  note: 'note',
+  isPinned: 'isPinned',
+  createdAt: 'createdAt',
+  explaination: 'explaination',
+  sessionId: 'sessionId'
+} as const
+
+export type PreparationQuestionScalarFieldEnum = (typeof PreparationQuestionScalarFieldEnum)[keyof typeof PreparationQuestionScalarFieldEnum]
 
 
 export const SortOrder = {

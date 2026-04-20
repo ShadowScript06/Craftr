@@ -391,7 +391,10 @@ export const ModelName = {
   Interview: 'Interview',
   InterviewSession: 'InterviewSession',
   SessionQuestion: 'SessionQuestion',
-  InterviewSessionResult: 'InterviewSessionResult'
+  InterviewSessionResult: 'InterviewSessionResult',
+  PreparationSession: 'PreparationSession',
+  Topic: 'Topic',
+  PreparationQuestion: 'PreparationQuestion'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -407,7 +410,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "subscription" | "application" | "note" | "interview" | "interviewSession" | "sessionQuestion" | "interviewSessionResult"
+    modelProps: "user" | "subscription" | "application" | "note" | "interview" | "interviewSession" | "sessionQuestion" | "interviewSessionResult" | "preparationSession" | "topic" | "preparationQuestion"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1003,6 +1006,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PreparationSession: {
+      payload: Prisma.$PreparationSessionPayload<ExtArgs>
+      fields: Prisma.PreparationSessionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PreparationSessionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PreparationSessionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload>
+        }
+        findFirst: {
+          args: Prisma.PreparationSessionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PreparationSessionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload>
+        }
+        findMany: {
+          args: Prisma.PreparationSessionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload>[]
+        }
+        create: {
+          args: Prisma.PreparationSessionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload>
+        }
+        createMany: {
+          args: Prisma.PreparationSessionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PreparationSessionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload>[]
+        }
+        delete: {
+          args: Prisma.PreparationSessionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload>
+        }
+        update: {
+          args: Prisma.PreparationSessionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload>
+        }
+        deleteMany: {
+          args: Prisma.PreparationSessionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PreparationSessionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PreparationSessionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload>[]
+        }
+        upsert: {
+          args: Prisma.PreparationSessionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationSessionPayload>
+        }
+        aggregate: {
+          args: Prisma.PreparationSessionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePreparationSession>
+        }
+        groupBy: {
+          args: Prisma.PreparationSessionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PreparationSessionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PreparationSessionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PreparationSessionCountAggregateOutputType> | number
+        }
+      }
+    }
+    Topic: {
+      payload: Prisma.$TopicPayload<ExtArgs>
+      fields: Prisma.TopicFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TopicFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TopicFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload>
+        }
+        findFirst: {
+          args: Prisma.TopicFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TopicFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload>
+        }
+        findMany: {
+          args: Prisma.TopicFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload>[]
+        }
+        create: {
+          args: Prisma.TopicCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload>
+        }
+        createMany: {
+          args: Prisma.TopicCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TopicCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload>[]
+        }
+        delete: {
+          args: Prisma.TopicDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload>
+        }
+        update: {
+          args: Prisma.TopicUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload>
+        }
+        deleteMany: {
+          args: Prisma.TopicDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TopicUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TopicUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload>[]
+        }
+        upsert: {
+          args: Prisma.TopicUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TopicPayload>
+        }
+        aggregate: {
+          args: Prisma.TopicAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTopic>
+        }
+        groupBy: {
+          args: Prisma.TopicGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TopicGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TopicCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TopicCountAggregateOutputType> | number
+        }
+      }
+    }
+    PreparationQuestion: {
+      payload: Prisma.$PreparationQuestionPayload<ExtArgs>
+      fields: Prisma.PreparationQuestionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PreparationQuestionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PreparationQuestionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload>
+        }
+        findFirst: {
+          args: Prisma.PreparationQuestionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PreparationQuestionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload>
+        }
+        findMany: {
+          args: Prisma.PreparationQuestionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload>[]
+        }
+        create: {
+          args: Prisma.PreparationQuestionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload>
+        }
+        createMany: {
+          args: Prisma.PreparationQuestionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PreparationQuestionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload>[]
+        }
+        delete: {
+          args: Prisma.PreparationQuestionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload>
+        }
+        update: {
+          args: Prisma.PreparationQuestionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload>
+        }
+        deleteMany: {
+          args: Prisma.PreparationQuestionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PreparationQuestionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PreparationQuestionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload>[]
+        }
+        upsert: {
+          args: Prisma.PreparationQuestionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PreparationQuestionPayload>
+        }
+        aggregate: {
+          args: Prisma.PreparationQuestionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePreparationQuestion>
+        }
+        groupBy: {
+          args: Prisma.PreparationQuestionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PreparationQuestionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PreparationQuestionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PreparationQuestionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1151,6 +1376,41 @@ export const InterviewSessionResultScalarFieldEnum = {
 } as const
 
 export type InterviewSessionResultScalarFieldEnum = (typeof InterviewSessionResultScalarFieldEnum)[keyof typeof InterviewSessionResultScalarFieldEnum]
+
+
+export const PreparationSessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  role: 'role',
+  experience: 'experience',
+  description: 'description',
+  createdAt: 'createdAt'
+} as const
+
+export type PreparationSessionScalarFieldEnum = (typeof PreparationSessionScalarFieldEnum)[keyof typeof PreparationSessionScalarFieldEnum]
+
+
+export const TopicScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  sessionId: 'sessionId'
+} as const
+
+export type TopicScalarFieldEnum = (typeof TopicScalarFieldEnum)[keyof typeof TopicScalarFieldEnum]
+
+
+export const PreparationQuestionScalarFieldEnum = {
+  id: 'id',
+  question: 'question',
+  answer: 'answer',
+  note: 'note',
+  isPinned: 'isPinned',
+  createdAt: 'createdAt',
+  explaination: 'explaination',
+  sessionId: 'sessionId'
+} as const
+
+export type PreparationQuestionScalarFieldEnum = (typeof PreparationQuestionScalarFieldEnum)[keyof typeof PreparationQuestionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1390,6 +1650,9 @@ export type GlobalOmitConfig = {
   interviewSession?: Prisma.InterviewSessionOmit
   sessionQuestion?: Prisma.SessionQuestionOmit
   interviewSessionResult?: Prisma.InterviewSessionResultOmit
+  preparationSession?: Prisma.PreparationSessionOmit
+  topic?: Prisma.TopicOmit
+  preparationQuestion?: Prisma.PreparationQuestionOmit
 }
 
 /* Types for Logging */

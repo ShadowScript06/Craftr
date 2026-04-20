@@ -37,39 +37,63 @@ const CARDS = [
     accentDot: "bg-indigo-400",
     blob: "from-indigo-100/60 to-violet-100/40",
   },
- {
-  icon: (
-    <svg
-      className="w-6 h-6"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-    >
-      <path d="M12 2a4 4 0 0 0-4 4v1H6a2 2 0 0 0-2 2v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V9a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4z" />
-      <path d="M8 12h8M8 16h6" />
-    </svg>
-  ),
 
-  iconBg: "from-blue-400 to-sky-500",
-  iconShadow: "shadow-blue-200",
+  {
+    icon: (
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+      >
+        <path d="M12 2a4 4 0 0 0-4 4v1H6a2 2 0 0 0-2 2v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V9a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4z" />
+        <path d="M8 12h8M8 16h6" />
+      </svg>
+    ),
+    iconBg: "from-blue-400 to-sky-500",
+    iconShadow: "shadow-blue-200",
+    tag: "AI Assessment",
+    tagColor: "bg-blue-50 text-blue-600 ring-blue-100",
+    title: "Mock Tests",
+    description:
+      "Simulate real interview questions with AI. Answer them and get structured evaluation, feedback, and performance scoring.",
+    cta: "Start Test",
+    ctaStyle: "from-blue-500 to-sky-500 shadow-blue-200",
+    route: "/tests",
+    disabled: false,
+    accentDot: "bg-blue-400",
+    blob: "from-blue-100/60 to-sky-100/40",
+  },
 
-  tag: "AI Assessment",
-  tagColor: "bg-blue-50 text-blue-600 ring-blue-100",
+  {
+    icon: (
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+      >
+        <path d="M9 12l2 2 4-4" />
+        <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" />
+      </svg>
+    ),
+    iconBg: "from-pink-500 to-rose-500",
+    iconShadow: "shadow-pink-200",
+    tag: "Preparation",
+    tagColor: "bg-pink-50 text-pink-600 ring-pink-100",
+    title: "Interview Prep",
+    description:
+      "Practice HR, technical, and behavioral interview rounds with curated questions, smart tips, and confidence-building guidance.",
+    cta: "Start Prep",
+    ctaStyle: "from-pink-500 to-rose-500 shadow-pink-200",
+    route: "/preparations",
+    disabled: false,
+    accentDot: "bg-pink-400",
+    blob: "from-pink-100/60 to-rose-100/40",
+  },
 
-  title: "Mock Tests",
-  description:
-    "Simulate real interview questions  with AI, Answer them. Get structured evaluation, feedback, and performance scoring.",
-
-  cta: "Start Test",
-  ctaStyle: "from-blue-500 to-sky-500 shadow-blue-200",
-
-  route: "/tests",
-  disabled: false,
-
-  accentDot: "bg-blue-400",
-  blob: "from-blue-100/60 to-sky-100/40",
-},
   {
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -91,6 +115,7 @@ const CARDS = [
     accentDot: "bg-emerald-400",
     blob: "from-emerald-100/60 to-teal-100/40",
   },
+
   {
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -133,6 +158,10 @@ function DashBoard() {
     syncUser();
   }, [getToken, navigate]);
 
+  useEffect(()=>{
+     getToken().then((data)=>console.log(data));
+   
+  })
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
       <Navbar />

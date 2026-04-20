@@ -12,6 +12,8 @@ import interviewRouter from "./modules/interview/interview.routes"
 
 import sessionRouter from "./modules/session/session.routes";
 
+import preparationRouter from "./modules/preparation/preparation.routes";
+
 
 
 
@@ -30,6 +32,7 @@ app.use('/api/jobs',jobRouter);
 app.use('/api/applications',applicationRouter);
 app.use('/api/interviews',interviewRouter);
 app.use('/api/interviews/:interviewId/sessions',sessionRouter);
+app.use('/api/preparations',preparationRouter)
 
 
 

@@ -30,6 +30,8 @@ model User{
   interview Interview[]
 
   interviewSession InterviewSession[]
+
+  preperationSession PreparationSession[]
 }
 
 model Subscription{
@@ -162,11 +164,6 @@ model SessionQuestion {
 }
 
 
-
-
-
-
-
 model InterviewSessionResult {
   id          String @id @default(cuid())
 
@@ -187,4 +184,46 @@ model InterviewSessionResult {
   timeTaken   Int?       // seconds
 
   createdAt   DateTime @default(now())
+}
+
+
+
+model PreparationSession {
+  id String @id @default(uuid())
+
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  role String
+  experience Int
+  description String
+
+  topics Topic[]
+  questions PreparationQuestion[]
+
+  createdAt DateTime @default(now())
+}
+
+model Topic {
+  id String @id @default(uuid())
+
+  name String
+
+  sessionId String
+  session PreparationSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model PreparationQuestion {
+  id String @id @default(uuid())
+
+  question String
+  answer String?
+  note String?
+  isPinned Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  explaination String
+  sessionId String
+  session PreparationSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 }

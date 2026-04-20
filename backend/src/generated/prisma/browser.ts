@@ -57,3 +57,18 @@ export type SessionQuestion = Prisma.SessionQuestionModel
  * 
  */
 export type InterviewSessionResult = Prisma.InterviewSessionResultModel
+/**
+ * Model PreparationSession
+ * 
+ */
+export type PreparationSession = Prisma.PreparationSessionModel
+/**
+ * Model Topic
+ * 
+ */
+export type Topic = Prisma.TopicModel
+/**
+ * Model PreparationQuestion
+ * 
+ */
+export type PreparationQuestion = Prisma.PreparationQuestionModel

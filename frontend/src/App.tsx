@@ -12,6 +12,8 @@ import ApplicationDetail from "./pages/ApplicationDetail";
 import CreateInterviewPage from "./pages/CreateInterviewPage";
 import InterviewDetail from "./pages/InterviewDetail";
 import Session from "./pages/Session";
+import Preparations from "./pages/Preparations";
+import PreparationSession from "./pages/PreparationSession";
 
 
 function App() {
@@ -34,6 +36,11 @@ function App() {
         <Route  path="/tests/:id" element={<InterviewDetail/>}/>
 
         <Route  path="/tests/:id/session/:sessionId" element={<Session/>}/>
+
+        <Route path="/preparations" element={<Preparations/>}/>
+
+        <Route path="/preparations/:id" element={<PreparationSession/>}/>
+
       </Routes>
     </div>
   );
