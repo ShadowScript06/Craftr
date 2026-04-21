@@ -72,3 +72,13 @@ export type Topic = Prisma.TopicModel
  * 
  */
 export type PreparationQuestion = Prisma.PreparationQuestionModel
+/**
+ * Model Resume
+ * 
+ */
+export type Resume = Prisma.ResumeModel
+/**
+ * Model Feedback
+ * 
+ */
+export type Feedback = Prisma.FeedbackModel

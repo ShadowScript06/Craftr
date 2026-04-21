@@ -32,6 +32,8 @@ model User{
   interviewSession InterviewSession[]
 
   preperationSession PreparationSession[]
+
+  resume Resume[]
 }
 
 model Subscription{
@@ -226,4 +228,50 @@ model PreparationQuestion {
   explaination String
   sessionId String
   session PreparationSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model Resume {
+  id              String    @id @default(uuid())
+  userId          String
+
+  companyName     String?
+  jobTitle        String?
+  jobDescription  String
+
+  resumeUrl       String
+  previewImageUrl String?
+
+  extractedText   String    @db.Text
+
+  status          String
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  feedback        Feedback?
+
+  @@index([userId])
+}
+
+
+model Feedback {
+  id            String   @id @default(uuid())
+  resumeId      String   @unique
+
+  overallScore  Int
+  atsScore      Int
+
+  tone          Json
+  content       Json
+  structure     Json
+  skills        Json
+
+  summary       String?
+  suggestions   Json?
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  resume        Resume   @relation(fields: [resumeId], references: [id], onDelete: Cascade)
 }

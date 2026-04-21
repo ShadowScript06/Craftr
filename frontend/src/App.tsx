@@ -14,6 +14,8 @@ import InterviewDetail from "./pages/InterviewDetail";
 import Session from "./pages/Session";
 import Preparations from "./pages/Preparations";
 import PreparationSession from "./pages/PreparationSession";
+import ResumeAnalyzerPage from "./pages/ResumeAnalyzerPage";
+import ResumeFeedbackPage from "./pages/ResumeFeedbackPage";
 
 
 function App() {
@@ -40,6 +42,10 @@ function App() {
         <Route path="/preparations" element={<Preparations/>}/>
 
         <Route path="/preparations/:id" element={<PreparationSession/>}/>
+
+        <Route path="/analyser" element={<ResumeAnalyzerPage/>}/>
+
+        <Route path="/analyser/:id" element={<ResumeFeedbackPage/>}/>
 
       </Routes>
     </div>

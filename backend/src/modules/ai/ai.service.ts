@@ -418,7 +418,79 @@ STRICT RULES:
   return parsed;
 };
 
+
+
+
+ const analyzeResumeWithAI = async (
+  resumeText: string,
+  jobDescription: string
+) => {
+  const prompt = `
+Analyze this resume against the job description.
+
+Return ONLY valid JSON:
+
+{
+  "overallScore": 0,
+  "atsScore": 0,
+  "tone": {
+    "score": 0,
+    "feedback": ""
+  },
+  "content": {
+    "score": 0,
+    "feedback": ""
+  },
+  "structure": {
+    "score": 0,
+    "feedback": ""
+  },
+  "skills": {
+    "score": 0,
+    "missing": [],
+    "feedback": ""
+  },
+  "summary": "",
+  "suggestions": []
+}
+
+Resume:
+${resumeText}
+
+Job Description:
+${jobDescription}
+`;
+
+  const response = await client.post(
+    "/chat/completions",
+    {
+      model: "openai/gpt-4o-mini",
+      messages: [
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+      temperature: 0.3,
+    }
+  );
+
+  const content =
+    response.data.choices[0].message.content ||"{}" ;
+
+  const cleanedContent = content
+  .replace(/```json/g, "")
+  .replace(/```/g, "")
+  .trim();
+
+return JSON.parse(cleanedContent);
+};
+
 export const aiServices = {
   generateInterviewQuestions,
-  evaluateInterview,generateRetryQuestions
+  evaluateInterview,generateRetryQuestions,
+  analyzeResumeWithAI
 };
+
+
+

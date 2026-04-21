@@ -187,6 +187,7 @@ export type UserWhereInput = {
   interview?: Prisma.InterviewListRelationFilter
   interviewSession?: Prisma.InterviewSessionListRelationFilter
   preperationSession?: Prisma.PreparationSessionListRelationFilter
+  resume?: Prisma.ResumeListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -200,6 +201,7 @@ export type UserOrderByWithRelationInput = {
   interview?: Prisma.InterviewOrderByRelationAggregateInput
   interviewSession?: Prisma.InterviewSessionOrderByRelationAggregateInput
   preperationSession?: Prisma.PreparationSessionOrderByRelationAggregateInput
+  resume?: Prisma.ResumeOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -216,6 +218,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   interview?: Prisma.InterviewListRelationFilter
   interviewSession?: Prisma.InterviewSessionListRelationFilter
   preperationSession?: Prisma.PreparationSessionListRelationFilter
+  resume?: Prisma.ResumeListRelationFilter
 }, "id" | "clerkId">
 
 export type UserOrderByWithAggregationInput = {
@@ -251,6 +254,7 @@ export type UserCreateInput = {
   interview?: Prisma.InterviewCreateNestedManyWithoutUserInput
   interviewSession?: Prisma.InterviewSessionCreateNestedManyWithoutUserInput
   preperationSession?: Prisma.PreparationSessionCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -264,6 +268,7 @@ export type UserUncheckedCreateInput = {
   interview?: Prisma.InterviewUncheckedCreateNestedManyWithoutUserInput
   interviewSession?: Prisma.InterviewSessionUncheckedCreateNestedManyWithoutUserInput
   preperationSession?: Prisma.PreparationSessionUncheckedCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -277,6 +282,7 @@ export type UserUpdateInput = {
   interview?: Prisma.InterviewUpdateManyWithoutUserNestedInput
   interviewSession?: Prisma.InterviewSessionUpdateManyWithoutUserNestedInput
   preperationSession?: Prisma.PreparationSessionUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -290,6 +296,7 @@ export type UserUncheckedUpdateInput = {
   interview?: Prisma.InterviewUncheckedUpdateManyWithoutUserNestedInput
   interviewSession?: Prisma.InterviewSessionUncheckedUpdateManyWithoutUserNestedInput
   preperationSession?: Prisma.PreparationSessionUncheckedUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -427,6 +434,20 @@ export type UserUpdateOneRequiredWithoutPreperationSessionNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPreperationSessionInput, Prisma.UserUpdateWithoutPreperationSessionInput>, Prisma.UserUncheckedUpdateWithoutPreperationSessionInput>
 }
 
+export type UserCreateNestedOneWithoutResumeInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutResumeInput, Prisma.UserUncheckedCreateWithoutResumeInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutResumeInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutResumeNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutResumeInput, Prisma.UserUncheckedCreateWithoutResumeInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutResumeInput
+  upsert?: Prisma.UserUpsertWithoutResumeInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutResumeInput, Prisma.UserUpdateWithoutResumeInput>, Prisma.UserUncheckedUpdateWithoutResumeInput>
+}
+
 export type UserCreateWithoutSubscriptionInput = {
   id?: string
   clerkId: string
@@ -437,6 +458,7 @@ export type UserCreateWithoutSubscriptionInput = {
   interview?: Prisma.InterviewCreateNestedManyWithoutUserInput
   interviewSession?: Prisma.InterviewSessionCreateNestedManyWithoutUserInput
   preperationSession?: Prisma.PreparationSessionCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSubscriptionInput = {
@@ -449,6 +471,7 @@ export type UserUncheckedCreateWithoutSubscriptionInput = {
   interview?: Prisma.InterviewUncheckedCreateNestedManyWithoutUserInput
   interviewSession?: Prisma.InterviewSessionUncheckedCreateNestedManyWithoutUserInput
   preperationSession?: Prisma.PreparationSessionUncheckedCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSubscriptionInput = {
@@ -477,6 +500,7 @@ export type UserUpdateWithoutSubscriptionInput = {
   interview?: Prisma.InterviewUpdateManyWithoutUserNestedInput
   interviewSession?: Prisma.InterviewSessionUpdateManyWithoutUserNestedInput
   preperationSession?: Prisma.PreparationSessionUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSubscriptionInput = {
@@ -489,6 +513,7 @@ export type UserUncheckedUpdateWithoutSubscriptionInput = {
   interview?: Prisma.InterviewUncheckedUpdateManyWithoutUserNestedInput
   interviewSession?: Prisma.InterviewSessionUncheckedUpdateManyWithoutUserNestedInput
   preperationSession?: Prisma.PreparationSessionUncheckedUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutApplicationsInput = {
@@ -501,6 +526,7 @@ export type UserCreateWithoutApplicationsInput = {
   interview?: Prisma.InterviewCreateNestedManyWithoutUserInput
   interviewSession?: Prisma.InterviewSessionCreateNestedManyWithoutUserInput
   preperationSession?: Prisma.PreparationSessionCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutApplicationsInput = {
@@ -513,6 +539,7 @@ export type UserUncheckedCreateWithoutApplicationsInput = {
   interview?: Prisma.InterviewUncheckedCreateNestedManyWithoutUserInput
   interviewSession?: Prisma.InterviewSessionUncheckedCreateNestedManyWithoutUserInput
   preperationSession?: Prisma.PreparationSessionUncheckedCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutApplicationsInput = {
@@ -541,6 +568,7 @@ export type UserUpdateWithoutApplicationsInput = {
   interview?: Prisma.InterviewUpdateManyWithoutUserNestedInput
   interviewSession?: Prisma.InterviewSessionUpdateManyWithoutUserNestedInput
   preperationSession?: Prisma.PreparationSessionUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutApplicationsInput = {
@@ -553,6 +581,7 @@ export type UserUncheckedUpdateWithoutApplicationsInput = {
   interview?: Prisma.InterviewUncheckedUpdateManyWithoutUserNestedInput
   interviewSession?: Prisma.InterviewSessionUncheckedUpdateManyWithoutUserNestedInput
   preperationSession?: Prisma.PreparationSessionUncheckedUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutInterviewInput = {
@@ -565,6 +594,7 @@ export type UserCreateWithoutInterviewInput = {
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   interviewSession?: Prisma.InterviewSessionCreateNestedManyWithoutUserInput
   preperationSession?: Prisma.PreparationSessionCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInterviewInput = {
@@ -577,6 +607,7 @@ export type UserUncheckedCreateWithoutInterviewInput = {
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   interviewSession?: Prisma.InterviewSessionUncheckedCreateNestedManyWithoutUserInput
   preperationSession?: Prisma.PreparationSessionUncheckedCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInterviewInput = {
@@ -605,6 +636,7 @@ export type UserUpdateWithoutInterviewInput = {
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   interviewSession?: Prisma.InterviewSessionUpdateManyWithoutUserNestedInput
   preperationSession?: Prisma.PreparationSessionUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInterviewInput = {
@@ -617,6 +649,7 @@ export type UserUncheckedUpdateWithoutInterviewInput = {
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   interviewSession?: Prisma.InterviewSessionUncheckedUpdateManyWithoutUserNestedInput
   preperationSession?: Prisma.PreparationSessionUncheckedUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutInterviewSessionInput = {
@@ -629,6 +662,7 @@ export type UserCreateWithoutInterviewSessionInput = {
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   interview?: Prisma.InterviewCreateNestedManyWithoutUserInput
   preperationSession?: Prisma.PreparationSessionCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInterviewSessionInput = {
@@ -641,6 +675,7 @@ export type UserUncheckedCreateWithoutInterviewSessionInput = {
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   interview?: Prisma.InterviewUncheckedCreateNestedManyWithoutUserInput
   preperationSession?: Prisma.PreparationSessionUncheckedCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInterviewSessionInput = {
@@ -669,6 +704,7 @@ export type UserUpdateWithoutInterviewSessionInput = {
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   interview?: Prisma.InterviewUpdateManyWithoutUserNestedInput
   preperationSession?: Prisma.PreparationSessionUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInterviewSessionInput = {
@@ -681,6 +717,7 @@ export type UserUncheckedUpdateWithoutInterviewSessionInput = {
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   interview?: Prisma.InterviewUncheckedUpdateManyWithoutUserNestedInput
   preperationSession?: Prisma.PreparationSessionUncheckedUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPreperationSessionInput = {
@@ -693,6 +730,7 @@ export type UserCreateWithoutPreperationSessionInput = {
   applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
   interview?: Prisma.InterviewCreateNestedManyWithoutUserInput
   interviewSession?: Prisma.InterviewSessionCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPreperationSessionInput = {
@@ -705,6 +743,7 @@ export type UserUncheckedCreateWithoutPreperationSessionInput = {
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
   interview?: Prisma.InterviewUncheckedCreateNestedManyWithoutUserInput
   interviewSession?: Prisma.InterviewSessionUncheckedCreateNestedManyWithoutUserInput
+  resume?: Prisma.ResumeUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPreperationSessionInput = {
@@ -733,6 +772,7 @@ export type UserUpdateWithoutPreperationSessionInput = {
   applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
   interview?: Prisma.InterviewUpdateManyWithoutUserNestedInput
   interviewSession?: Prisma.InterviewSessionUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPreperationSessionInput = {
@@ -745,6 +785,75 @@ export type UserUncheckedUpdateWithoutPreperationSessionInput = {
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
   interview?: Prisma.InterviewUncheckedUpdateManyWithoutUserNestedInput
   interviewSession?: Prisma.InterviewSessionUncheckedUpdateManyWithoutUserNestedInput
+  resume?: Prisma.ResumeUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutResumeInput = {
+  id?: string
+  clerkId: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updateAt?: Date | string
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutUserInput
+  applications?: Prisma.ApplicationCreateNestedManyWithoutUserInput
+  interview?: Prisma.InterviewCreateNestedManyWithoutUserInput
+  interviewSession?: Prisma.InterviewSessionCreateNestedManyWithoutUserInput
+  preperationSession?: Prisma.PreparationSessionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutResumeInput = {
+  id?: string
+  clerkId: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updateAt?: Date | string
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutUserInput
+  applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutUserInput
+  interview?: Prisma.InterviewUncheckedCreateNestedManyWithoutUserInput
+  interviewSession?: Prisma.InterviewSessionUncheckedCreateNestedManyWithoutUserInput
+  preperationSession?: Prisma.PreparationSessionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutResumeInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutResumeInput, Prisma.UserUncheckedCreateWithoutResumeInput>
+}
+
+export type UserUpsertWithoutResumeInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutResumeInput, Prisma.UserUncheckedUpdateWithoutResumeInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutResumeInput, Prisma.UserUncheckedCreateWithoutResumeInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutResumeInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutResumeInput, Prisma.UserUncheckedUpdateWithoutResumeInput>
+}
+
+export type UserUpdateWithoutResumeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subscription?: Prisma.SubscriptionUpdateOneWithoutUserNestedInput
+  applications?: Prisma.ApplicationUpdateManyWithoutUserNestedInput
+  interview?: Prisma.InterviewUpdateManyWithoutUserNestedInput
+  interviewSession?: Prisma.InterviewSessionUpdateManyWithoutUserNestedInput
+  preperationSession?: Prisma.PreparationSessionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutResumeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updateAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+  applications?: Prisma.ApplicationUncheckedUpdateManyWithoutUserNestedInput
+  interview?: Prisma.InterviewUncheckedUpdateManyWithoutUserNestedInput
+  interviewSession?: Prisma.InterviewSessionUncheckedUpdateManyWithoutUserNestedInput
+  preperationSession?: Prisma.PreparationSessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -757,6 +866,7 @@ export type UserCountOutputType = {
   interview: number
   interviewSession: number
   preperationSession: number
+  resume: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -764,6 +874,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   interview?: boolean | UserCountOutputTypeCountInterviewArgs
   interviewSession?: boolean | UserCountOutputTypeCountInterviewSessionArgs
   preperationSession?: boolean | UserCountOutputTypeCountPreperationSessionArgs
+  resume?: boolean | UserCountOutputTypeCountResumeArgs
 }
 
 /**
@@ -804,6 +915,13 @@ export type UserCountOutputTypeCountPreperationSessionArgs<ExtArgs extends runti
   where?: Prisma.PreparationSessionWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountResumeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ResumeWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -816,6 +934,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   interview?: boolean | Prisma.User$interviewArgs<ExtArgs>
   interviewSession?: boolean | Prisma.User$interviewSessionArgs<ExtArgs>
   preperationSession?: boolean | Prisma.User$preperationSessionArgs<ExtArgs>
+  resume?: boolean | Prisma.User$resumeArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -850,6 +969,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   interview?: boolean | Prisma.User$interviewArgs<ExtArgs>
   interviewSession?: boolean | Prisma.User$interviewSessionArgs<ExtArgs>
   preperationSession?: boolean | Prisma.User$preperationSessionArgs<ExtArgs>
+  resume?: boolean | Prisma.User$resumeArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -863,6 +983,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     interview: Prisma.$InterviewPayload<ExtArgs>[]
     interviewSession: Prisma.$InterviewSessionPayload<ExtArgs>[]
     preperationSession: Prisma.$PreparationSessionPayload<ExtArgs>[]
+    resume: Prisma.$ResumePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1269,6 +1390,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   interview<T extends Prisma.User$interviewArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$interviewArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InterviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   interviewSession<T extends Prisma.User$interviewSessionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$interviewSessionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InterviewSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   preperationSession<T extends Prisma.User$preperationSessionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$preperationSessionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PreparationSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  resume<T extends Prisma.User$resumeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$resumeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1808,6 +1930,30 @@ export type User$preperationSessionArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.PreparationSessionScalarFieldEnum | Prisma.PreparationSessionScalarFieldEnum[]
+}
+
+/**
+ * User.resume
+ */
+export type User$resumeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Resume
+   */
+  select?: Prisma.ResumeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Resume
+   */
+  omit?: Prisma.ResumeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ResumeInclude<ExtArgs> | null
+  where?: Prisma.ResumeWhereInput
+  orderBy?: Prisma.ResumeOrderByWithRelationInput | Prisma.ResumeOrderByWithRelationInput[]
+  cursor?: Prisma.ResumeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ResumeScalarFieldEnum | Prisma.ResumeScalarFieldEnum[]
 }
 
 /**

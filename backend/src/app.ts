@@ -14,6 +14,7 @@ import sessionRouter from "./modules/session/session.routes";
 
 import preparationRouter from "./modules/preparation/preparation.routes";
 
+import analyserRouter from "./modules/analyser/anlyser.routes";
 
 
 
@@ -33,7 +34,7 @@ app.use('/api/applications',applicationRouter);
 app.use('/api/interviews',interviewRouter);
 app.use('/api/interviews/:interviewId/sessions',sessionRouter);
 app.use('/api/preparations',preparationRouter)
-
+app.use('/api/analyse',analyserRouter)
 
 
 app.get("/health", async (req, res) => {
