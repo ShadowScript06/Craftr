@@ -158,14 +158,14 @@ function UploadModal({ onClose, onSuccess }: {
         className="w-full max-w-lg bg-white/95 backdrop-blur-xl rounded-3xl border border-slate-200/60 shadow-2xl shadow-slate-300/40 p-7 relative overflow-hidden"
       >
         {/* Blobs */}
-        <div className="absolute -top-12 -right-12 w-44 h-44 rounded-full bg-gradient-to-br from-indigo-200/40 to-violet-200/30 blur-2xl pointer-events-none" />
-        <div className="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-gradient-to-br from-emerald-200/30 to-teal-200/20 blur-2xl pointer-events-none" />
+        <div className="absolute -top-12 -right-12 w-44 h-44 rounded-full bg-linear-to-br from-indigo-200/40 to-violet-200/30 blur-2xl pointer-events-none" />
+        <div className="absolute -bottom-10 -left-10 w-36 h-36 rounded-full bg-linear-to-br from-emerald-200/30 to-teal-200/20 blur-2xl pointer-events-none" />
 
         {/* Header */}
         <div className="relative mb-6 flex items-start justify-between">
           <div>
             <div className="flex items-center gap-2.5 mb-1">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-200">
+              <div className="w-8 h-8 rounded-xl bg-linear-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-200">
                 <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
                 </svg>
@@ -200,7 +200,7 @@ function UploadModal({ onClose, onSuccess }: {
 
             {file ? (
               <div className="flex items-center justify-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-md shadow-emerald-200">
+                <div className="w-10 h-10 rounded-xl bg-linear-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-md shadow-emerald-200">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                     <polyline points="14,2 14,8 20,8" />
@@ -257,7 +257,7 @@ function UploadModal({ onClose, onSuccess }: {
             whileTap={{ scale: 0.97 }}
             onClick={handleUpload}
             disabled={uploading}
-            className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white text-sm font-semibold shadow-lg shadow-indigo-200 transition-all duration-200 cursor-pointer"
+            className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-linear-to-br from-indigo-500 to-violet-600 text-white text-sm font-semibold shadow-lg shadow-indigo-200 transition-all duration-200 cursor-pointer"
           >
             {uploading ? (
               <div className="flex gap-1.5">
@@ -328,7 +328,7 @@ export default function ResumeAnalyzerPage() {
   const pending    = resumes.filter((r) => r.status === "PENDING" || r.status === "IN_PROGRESS").length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 flex font-sans">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 flex font-sans">
 
       {/* ── Sidebar ── */}
       <motion.aside
@@ -339,7 +339,7 @@ export default function ResumeAnalyzerPage() {
       >
         {/* Brand */}
         <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-200 cursor-pointer"
+          <div className="w-9 h-9 rounded-xl bg-linear-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-200 cursor-pointer"
             onClick={() => navigate("/dashboard")}>
             <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -356,7 +356,7 @@ export default function ResumeAnalyzerPage() {
           whileHover={{ scale: 1.03, y: -2, boxShadow: "0 12px 32px rgba(99,102,241,0.4)" }}
           whileTap={{ scale: 0.97 }}
           onClick={() => setShowModal(true)}
-          className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white text-sm font-semibold shadow-lg shadow-indigo-200 cursor-pointer"
+          className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-linear-to-br from-indigo-500 to-violet-600 text-white text-sm font-semibold shadow-lg shadow-indigo-200 cursor-pointer"
         >
           <motion.span whileHover={{ rotate: 90 }} transition={{ type: "spring", stiffness: 400 }}
             className="w-5 h-5 rounded-md bg-white/20 flex items-center justify-center text-base leading-none">+</motion.span>
@@ -380,7 +380,7 @@ export default function ResumeAnalyzerPage() {
 
         {/* Promo card */}
         <motion.div whileHover={{ scale: 1.02 }}
-          className="rounded-2xl py-4 px-5 bg-gradient-to-br from-indigo-500 via-violet-500 to-purple-600 text-white relative overflow-hidden shadow-lg shadow-indigo-200">
+          className="rounded-2xl py-4 px-5 bg-linear-to-br from-indigo-500 via-violet-500 to-purple-600 text-white relative overflow-hidden shadow-lg shadow-indigo-200">
           <div className="absolute -top-8 -right-8 w-28 h-28 bg-white/10 rounded-full" />
           <div className="absolute -bottom-6 right-10 w-16 h-16 bg-white/5 rounded-full" />
           <div className="relative z-10">
@@ -413,7 +413,7 @@ export default function ResumeAnalyzerPage() {
               { label: "Total",     value: resumes.length, grad: "from-indigo-500 to-violet-600", shadow: "shadow-indigo-200" },
               { label: "Completed", value: completed,       grad: "from-emerald-400 to-teal-500",  shadow: "shadow-emerald-200" },
             ].map(({ label, value, grad, shadow }) => (
-              <div key={label} className={`bg-gradient-to-br ${grad} text-white rounded-2xl px-4 py-2 text-center shadow-lg ${shadow}`}>
+              <div key={label} className={`bg-linear-to-br ${grad} text-white rounded-2xl px-4 py-2 text-center shadow-lg ${shadow}`}>
                 <div className="text-xl font-black leading-none">{value}</div>
                 <div className="text-[10px] font-semibold opacity-80 uppercase tracking-wider mt-0.5">{label}</div>
               </div>
@@ -470,7 +470,7 @@ export default function ResumeAnalyzerPage() {
                     whileHover={{ scale: 1.04, y: -1, boxShadow: "0 10px 28px rgba(99,102,241,0.3)" }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setShowModal(true)}
-                    className="px-6 py-2.5 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white text-sm font-semibold shadow-lg shadow-indigo-200 cursor-pointer"
+                    className="px-6 py-2.5 rounded-xl bg-linear-to-br from-indigo-500 to-violet-600 text-white text-sm font-semibold shadow-lg shadow-indigo-200 cursor-pointer"
                   >
                     + Upload First Resume
                   </motion.button>
@@ -497,9 +497,9 @@ export default function ResumeAnalyzerPage() {
                           className="relative bg-white/90 backdrop-blur-lg rounded-2xl border border-slate-200/60 shadow-md p-5 flex flex-col gap-4 overflow-hidden group cursor-default"
                         >
                           {/* Blob */}
-                          <div className={`absolute -top-10 -right-10 w-36 h-36 rounded-full bg-gradient-to-br ${p.blob} blur-2xl pointer-events-none`} />
+                          <div className={`absolute -top-10 -right-10 w-36 h-36 rounded-full bg-linear-to-br ${p.blob} blur-2xl pointer-events-none`} />
                           {/* Bottom accent */}
-                          <div className={`absolute bottom-0 left-5 right-5 h-0.5 rounded-full bg-gradient-to-r ${p.grad} opacity-30`} />
+                          <div className={`absolute bottom-0 left-5 right-5 h-0.5 rounded-full bg-linear-to-r ${p.grad} opacity-30`} />
 
                           {/* Top row */}
                           <div className="flex items-start justify-between gap-2 relative">
@@ -507,7 +507,7 @@ export default function ResumeAnalyzerPage() {
                               <motion.div
                                 whileHover={{ scale: 1.12, rotate: 5 }}
                                 transition={{ type: "spring", stiffness: 400 }}
-                                className={`w-10 h-10 rounded-xl bg-gradient-to-br ${p.grad} flex items-center justify-center text-xs font-black text-white shadow-lg ${p.shadow} shrink-0`}
+                                className={`w-10 h-10 rounded-xl bg-linear-to-br ${p.grad} flex items-center justify-center text-xs font-black text-white shadow-lg ${p.shadow} shrink-0`}
                               >
                                 {initials}
                               </motion.div>
@@ -546,7 +546,7 @@ export default function ResumeAnalyzerPage() {
                           {r.previewImageUrl && (
                             <div className="relative rounded-xl overflow-hidden border border-slate-100 h-24 bg-slate-50">
                               <img src={r.previewImageUrl} alt="Resume preview" className="w-full h-full object-cover object-top" />
-                              <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent" />
+                              <div className="absolute inset-0 bg-linear-to-t from-white/30 to-transparent" />
                             </div>
                           )}
 
@@ -557,7 +557,7 @@ export default function ResumeAnalyzerPage() {
                                 whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.97 }}
                                 onClick={() => handleAnalyze(r.id)}
                                 disabled={isAnalyzing}
-                                className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 text-white text-xs font-bold shadow-md shadow-amber-200 transition-all cursor-pointer disabled:opacity-60"
+                                className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-linear-to-br from-amber-400 to-orange-500 text-white text-xs font-bold shadow-md shadow-amber-200 transition-all cursor-pointer disabled:opacity-60"
                               >
                                 {isAnalyzing ? (
                                   <div className="flex gap-1">
@@ -582,7 +582,7 @@ export default function ResumeAnalyzerPage() {
                             <motion.button
                               whileHover={{ scale: 1.03, y: -1, boxShadow: "0 8px 20px rgba(99,102,241,0.2)" }} whileTap={{ scale: 0.97 }}
                               onClick={() => navigate(`/analyser/${r.id}`)}
-                              className={`flex items-center justify-center gap-1.5 py-2 rounded-xl text-white text-xs font-bold shadow-md transition-all cursor-pointer bg-gradient-to-br ${p.grad} ${p.shadow} ${r.status !== "COMPLETED" ? "flex-1" : "w-full"}`}
+                              className={`flex items-center justify-center gap-1.5 py-2 rounded-xl text-white text-xs font-bold shadow-md transition-all cursor-pointer bg-linear-to-br ${p.grad} ${p.shadow} ${r.status !== "COMPLETED" ? "flex-1" : "w-full"}`}
                             >
                               <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />

@@ -19,25 +19,31 @@ const fadeUp :Variants= {
 const CARDS = [
   {
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2" />
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+      >
+        <path d="M9 12l2 2 4-4" />
+        <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" />
       </svg>
     ),
-    iconBg: "from-indigo-500 to-violet-600",
-    iconShadow: "shadow-indigo-200",
-    tag: "Productivity",
-    tagColor: "bg-indigo-50 text-indigo-500 ring-indigo-100",
-    title: "Track Applications",
+    iconBg: "from-pink-500 to-rose-500",
+    iconShadow: "shadow-pink-200",
+    tag: "Preparation",
+    tagColor: "bg-pink-50 text-pink-600 ring-pink-100",
+    title: "Interview Prep",
     description:
-      "Keep every job application organised in one place. Monitor status, add notes, and never lose track of your pipeline.",
-    cta: "Open Tracker",
-    ctaStyle: "from-indigo-500 to-violet-600 shadow-indigo-200",
-    route: "/applicationTracker",
+      "Practice HR, technical, and behavioral interview rounds with curated questions, smart tips, and confidence-building guidance.",
+    cta: "Start Prep",
+    ctaStyle: "from-pink-500 to-rose-500 shadow-pink-200",
+    route: "/preparations",
     disabled: false,
-    accentDot: "bg-indigo-400",
-    blob: "from-indigo-100/60 to-violet-100/40",
+    accentDot: "bg-pink-400",
+    blob: "from-pink-100/60 to-rose-100/40",
   },
-
   {
     icon: (
       <svg
@@ -65,34 +71,11 @@ const CARDS = [
     accentDot: "bg-blue-400",
     blob: "from-blue-100/60 to-sky-100/40",
   },
+  
 
-  {
-    icon: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-      >
-        <path d="M9 12l2 2 4-4" />
-        <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" />
-      </svg>
-    ),
-    iconBg: "from-pink-500 to-rose-500",
-    iconShadow: "shadow-pink-200",
-    tag: "Preparation",
-    tagColor: "bg-pink-50 text-pink-600 ring-pink-100",
-    title: "Interview Prep",
-    description:
-      "Practice HR, technical, and behavioral interview rounds with curated questions, smart tips, and confidence-building guidance.",
-    cta: "Start Prep",
-    ctaStyle: "from-pink-500 to-rose-500 shadow-pink-200",
-    route: "/preparations",
-    disabled: false,
-    accentDot: "bg-pink-400",
-    blob: "from-pink-100/60 to-rose-100/40",
-  },
+  
+
+  
 
   {
     icon: (
@@ -135,6 +118,26 @@ const CARDS = [
     disabled: false,
     accentDot: "bg-amber-400",
     blob: "from-amber-100/60 to-orange-100/40",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2" />
+      </svg>
+    ),
+    iconBg: "from-indigo-500 to-violet-600",
+    iconShadow: "shadow-indigo-200",
+    tag: "Productivity",
+    tagColor: "bg-indigo-50 text-indigo-500 ring-indigo-100",
+    title: "Track Applications",
+    description:
+      "Keep every job application organised in one place. Monitor status, add notes, and never lose track of your pipeline.",
+    cta: "Open Tracker",
+    ctaStyle: "from-indigo-500 to-violet-600 shadow-indigo-200",
+    route: "/applicationTracker",
+    disabled: false,
+    accentDot: "bg-indigo-400",
+    blob: "from-indigo-100/60 to-violet-100/40",
   },
 ];
 
