@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import type {
-  StatusKey,
+ 
   ApplicationDetailProps,
   AppData,
   Note,
-  TagOption,
+ 
 } from "../types/applicationDetails";
 
-import { STATUS_MAP, TAG_OPTIONS } from "../types/applicationDetails";
+import { STATUS_MAP } from "../types/applicationDetails";
 import NoteCard from "../components/applicationDetails/NoteCard";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -19,7 +19,7 @@ import UpdateApplicationModal from "../components/applicationDetails/UpdateAppli
 import ThreeDotsLoader from "../components/ThreeDotssLoader";
 
 // ── Main Component ────────────────────────────────────────────────────────────
-export default function ApplicationDetail({ onBack }: ApplicationDetailProps) {
+export default function ApplicationDetail( ){
   const [app, setApp] = useState<AppData | null>(null);
   const [notes, setNotes] = useState<Note[] | null>(null);
 
@@ -109,10 +109,7 @@ export default function ApplicationDetail({ onBack }: ApplicationDetailProps) {
 
   
 
-  const showToast = (msg: string): void => {
-    setToast(msg);
-    setTimeout(() => setToast(null), 3000);
-  };
+  
 
   const postNote = async () => {
     if (!editingNote) {

@@ -22,7 +22,7 @@ export default function CreateApplicationModal({
   });
 
   const fadeIn = { hidden: { opacity: 0 }, show: { opacity: 1 } };
-  const [errors, setErrors] = useState<Record<string, boolean>>({});
+  const [, setErrors] = useState<Record<string, boolean>>({});
   const modalVar: Variants = {
   hidden: { opacity: 0, scale: 0.88, y: 30 },
   show: {
@@ -59,10 +59,7 @@ const STATUS: Record<string, StatusConfig> = {
 
 
 
-  const set =
-    (k: keyof FormState) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
-      setForm((f) => ({ ...f, [k]: e.target.value }));
+ 
 
   // Form validation
   const validateForm = () => {

@@ -29,7 +29,7 @@ export default function UpdateApplicationModal({
 
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [errors, setErrors] = useState<Record<string, boolean>>({});
+  const [, setErrors] = useState<Record<string, boolean>>({});
 
   // preload data
   useEffect(() => {
