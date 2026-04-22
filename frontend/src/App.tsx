@@ -16,37 +16,135 @@ import Preparations from "./pages/Preparations";
 import PreparationSession from "./pages/PreparationSession";
 import ResumeAnalyzerPage from "./pages/ResumeAnalyzerPage";
 import ResumeFeedbackPage from "./pages/ResumeFeedbackPage";
-
+import ScrollAnimation from "./components/ScrollAnimation";
+import ProtectedWrapper from "./components/ProtectedWrapper";
 
 function App() {
   return (
     <div>
       <Routes>
+        {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/dashboard" element={<DashBoard />} />
-        <Route path="/jobs" element={<JobsPage/>}/>
-        <Route path="/jobs/:id" element={<JobDetail />} />
 
-        <Route path="/applicationtracker" element={<ApplicationTracker/>}/>
+        {/* Protected Routes */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedWrapper>
+              <DashBoard />
+            </ProtectedWrapper>
+          }
+        />
 
-        <Route path="/applicationtracker/:id" element={<ApplicationDetail />} />
+        <Route
+          path="/jobs"
+          element={
+            <ProtectedWrapper>
+              <JobsPage />
+            </ProtectedWrapper>
+          }
+        />
 
-        <Route  path="/tests" element={<CreateInterviewPage/>}/>
+        <Route
+          path="/jobs/:id"
+          element={
+            <ProtectedWrapper>
+              <JobDetail />
+            </ProtectedWrapper>
+          }
+        />
 
-        <Route  path="/tests/:id" element={<InterviewDetail/>}/>
+        <Route
+          path="/applicationtracker"
+          element={
+            <ProtectedWrapper>
+              <ApplicationTracker />
+            </ProtectedWrapper>
+          }
+        />
 
-        <Route  path="/tests/:id/session/:sessionId" element={<Session/>}/>
+        <Route
+          path="/applicationtracker/:id"
+          element={
+            <ProtectedWrapper>
+              <ApplicationDetail />
+            </ProtectedWrapper>
+          }
+        />
 
-        <Route path="/preparations" element={<Preparations/>}/>
+        <Route
+          path="/tests"
+          element={
+            <ProtectedWrapper>
+              <CreateInterviewPage />
+            </ProtectedWrapper>
+          }
+        />
 
-        <Route path="/preparations/:id" element={<PreparationSession/>}/>
+        <Route
+          path="/tests/:id"
+          element={
+            <ProtectedWrapper>
+              <InterviewDetail />
+            </ProtectedWrapper>
+          }
+        />
 
-        <Route path="/analyser" element={<ResumeAnalyzerPage/>}/>
+        <Route
+          path="/tests/:id/session/:sessionId"
+          element={
+            <ProtectedWrapper>
+              <Session />
+            </ProtectedWrapper>
+          }
+        />
 
-        <Route path="/analyser/:id" element={<ResumeFeedbackPage/>}/>
+        <Route
+          path="/preparations"
+          element={
+            <ProtectedWrapper>
+              <Preparations />
+            </ProtectedWrapper>
+          }
+        />
 
+        <Route
+          path="/preparations/:id"
+          element={
+            <ProtectedWrapper>
+              <PreparationSession />
+            </ProtectedWrapper>
+          }
+        />
+
+        <Route
+          path="/analyser"
+          element={
+            <ProtectedWrapper>
+              <ResumeAnalyzerPage />
+            </ProtectedWrapper>
+          }
+        />
+
+        <Route
+          path="/analyser/:id"
+          element={
+            <ProtectedWrapper>
+              <ResumeFeedbackPage />
+            </ProtectedWrapper>
+          }
+        />
+
+        <Route
+          path="/scroll"
+          element={
+            <ProtectedWrapper>
+              <ScrollAnimation />
+            </ProtectedWrapper>
+          }
+        />
       </Routes>
     </div>
   );

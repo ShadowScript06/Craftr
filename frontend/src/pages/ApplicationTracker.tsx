@@ -140,7 +140,11 @@ export default function ApplicationTracker() {
 
     try {
       const data = await fetchApps(); // async fetch
-      setApps(data); // ✅ safe inside async
+      
+      if(!data){
+        setApps([]);
+      }else{
+      setApps(data); }// ✅ safe inside async
     } catch (err: unknown) {
       if (err instanceof Error) setError(err.message);
     } finally {
@@ -152,20 +156,35 @@ export default function ApplicationTracker() {
   useEffect(() => {
     load(); // now safe, load runs async
   }, []);
+type Status = "applied" | "interviewing" | "offer" | "rejected";
 
-  const filtered = apps.filter((a) => {
-    const matchF =
-      activeFilter === "all" || a.status.toLowerCase() === activeFilter;
-    return matchF;
+const emptyCounts: Record<Status, number> = {
+  applied: 0,
+  interviewing: 0,
+  offer: 0,
+  rejected: 0,
+};
+
+let filtered: typeof apps = [];
+let counts: Record<Status, number> = { ...emptyCounts };
+
+if (apps?.length > 0) {
+  filtered = apps.filter((a) => {
+    return (
+      activeFilter === "all" ||
+      a.status.toLowerCase() === activeFilter
+    );
   });
 
-  const counts = apps.reduce<Record<string, number>>(
-    (acc, a) => {
-      acc[a.status.toLowerCase()] = (acc[a.status.toLowerCase()] || 0) + 1;
-      return acc;
-    },
-    { applied: 0, interviewing: 0, offer: 0, rejected: 0 },
-  );
+  counts = apps.reduce<Record<Status, number>>((acc, a) => {
+    const key = a.status.toLowerCase() as Status;
+    acc[key]++;
+    return acc;
+  }, { ...emptyCounts });
+}
+
+
+   
 
  
 

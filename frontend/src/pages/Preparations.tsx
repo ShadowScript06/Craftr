@@ -496,6 +496,7 @@ function Preparations() {
         `${import.meta.env.VITE_BACKEND_URL}/preparations/sessions`,
         { headers: { Authorization: `Bearer ${token}` } },
       );
+      console.log(res);
       setSessions(res.data.data);
     } catch (error) {
       console.log(error);
