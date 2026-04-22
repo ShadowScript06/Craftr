@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import type {
+  StatusKey,
+  ApplicationDetailProps,
   AppData,
   Note,
- 
+  TagOption,
 } from "../types/applicationDetails";
 
-import { STATUS_MAP } from "../types/applicationDetails";
+import { STATUS_MAP, TAG_OPTIONS } from "../types/applicationDetails";
 import NoteCard from "../components/applicationDetails/NoteCard";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -15,16 +17,16 @@ import { getToken } from "@clerk/react";
 import JobDetailsSkeleton from "../components/applicationDetails/JobDetailsSkeleton";
 import UpdateApplicationModal from "../components/applicationDetails/UpdateApplicationModal";
 import ThreeDotsLoader from "../components/ThreeDotssLoader";
-
+import type { Variants } from "framer-motion";
 // ── Main Component ────────────────────────────────────────────────────────────
-export default function ApplicationDetail( ){
+export default function ApplicationDetail({ onBack }: ApplicationDetailProps) {
   const [app, setApp] = useState<AppData | null>(null);
   const [notes, setNotes] = useState<Note[] | null>(null);
 
   const [noteText, setNoteText] = useState<string>("");
 
   const [editingNote, setEditingNote] = useState<boolean>(false);
-  const [toast,] = useState<string | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
   const [noteId, setNoteId] = useState<string | null>(null);
   let status;
   const [loading, setLoading] = useState<boolean>(false);
@@ -32,6 +34,16 @@ export default function ApplicationDetail( ){
   const [postingNote, setPostingNote] = useState<boolean>(false);
   const [deletingnote, setDeletingNote] = useState<boolean>(false);
 
+  const toastVar: Variants = {
+    hidden: { opacity: 0, y: 60, scale: 0.9 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 400, damping: 28 },
+    },
+    exit: { opacity: 0, y: 40, scale: 0.95, transition: { duration: 0.22 } },
+  };
   const navigate = useNavigate();
   if (app) {
     //@ts-ignore
@@ -107,7 +119,10 @@ export default function ApplicationDetail( ){
 
   
 
-  
+  const showToast = (msg: string): void => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 3000);
+  };
 
   const postNote = async () => {
     if (!editingNote) {
@@ -175,7 +190,7 @@ export default function ApplicationDetail( ){
     try {
       setDeletingNote(true);
       const token = await getToken();
-       await axios.delete(
+      const response = await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/applications/${id}/notes/${noteId}`,
         {
           headers: {
