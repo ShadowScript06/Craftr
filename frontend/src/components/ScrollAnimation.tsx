@@ -15,7 +15,7 @@ function clamp(v: number, min: number, max: number): number {
   return Math.min(Math.max(v, min), max);
 }
 
-export default function ScrollAnimation(): JSX.Element {
+export default function ScrollAnimation(): React.ReactElement{
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const framesRef = useRef<HTMLImageElement[]>([]);
   const currentFrameRef = useRef<number>(0);
@@ -152,7 +152,8 @@ export default function ScrollAnimation(): JSX.Element {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1 - Math.pow(1 - t, 3)),
-      smooth: true,
+      lerp: 0.1,
+      
     });
 
     const handleScroll = (): void => {
@@ -204,13 +205,10 @@ export default function ScrollAnimation(): JSX.Element {
     };
   }, [loaded, drawFrame]);
 
-  const showSecondText = frameIndex >= 170;
+ 
 
   // animation values based on scroll/frame
-  const progress = frameIndex / TOTAL_FRAMES;
-  const translateY = 40 - progress * 40;
-  const opacity = clamp(progress * 2, 0, 1);
-  const scale = 0.92 + progress * 0.08;
+  
 
   return (
     <div ref={containerRef} className="relative h-[220vh]">

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import type { Job } from "../types/job";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 function JobDetail() {
   const { id } = useParams();
@@ -19,6 +19,7 @@ function JobDetail() {
         const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/jobs/${id}`);
         if (res.status === 200) setJob(res.data.job);
       } catch (err) {
+        console.log(err);
         setError("Failed to fetch job");
       } finally {
         setLoading(false);
@@ -35,7 +36,7 @@ function JobDetail() {
   // ── Loading ──
   if (loading)
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
+      <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
         <Navbar />
         <div className="max-w-5xl mx-auto px-6 py-10 space-y-5">
           {/* Shimmer skeleton */}
@@ -54,7 +55,7 @@ function JobDetail() {
   // ── Error ──
   if (error)
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
+      <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
         <Navbar />
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
@@ -77,7 +78,7 @@ function JobDetail() {
   // ── No job ──
   if (!job)
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
+      <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
         <Navbar />
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
@@ -100,7 +101,7 @@ function JobDetail() {
   const initials = job.owner.companyName.slice(0, 2).toUpperCase();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/30 to-violet-50/20 font-sans">
       <Navbar />
 
       <div className="max-w-5xl mx-auto px-6 py-10">
@@ -136,7 +137,7 @@ function JobDetail() {
                 <motion.div
                   whileHover={{ scale: 1.08, rotate: 4 }}
                   transition={{ type: "spring", stiffness: 400 }}
-                  className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-100 to-violet-100 border border-indigo-100 flex items-center justify-center text-lg font-black text-indigo-600 shrink-0 overflow-hidden"
+                  className="w-14 h-14 rounded-2xl bg-linear-to-br from-indigo-100 to-violet-100 border border-indigo-100 flex items-center justify-center text-lg font-black text-indigo-600 shrink-0 overflow-hidden"
                 >
                   {job.owner.photo
                     ? <img src={job.owner.photo} alt={job.owner.companyName} className="w-full h-full object-cover" />
@@ -273,7 +274,7 @@ function JobDetail() {
                 target="_blank"
                 whileHover={{ scale: 1.03, y: -1, boxShadow: "0 10px 28px rgba(99,102,241,0.35)" }}
                 whileTap={{ scale: 0.97 }}
-                className="w-full text-center px-5 py-2.5 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white text-sm font-semibold shadow-lg shadow-indigo-200 transition-all duration-200"
+                className="w-full text-center px-5 py-2.5 rounded-xl bg-linear-to-br from-indigo-500 to-violet-600 text-white text-sm font-semibold shadow-lg shadow-indigo-200 transition-all duration-200"
               >
                 Apply Now →
               </motion.a>

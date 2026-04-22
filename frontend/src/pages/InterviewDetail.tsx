@@ -280,7 +280,7 @@ export default function InterviewDetail() {
     try {
       setDeletingSession(true);
       const token = await getToken();
-      const res = await axios.delete(
+       await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/interviews/${id}/sessions/${sessionId}`,
         { headers: { Authorization: `Bearer ${token}` } },
       );
@@ -323,7 +323,7 @@ export default function InterviewDetail() {
     try {
       setEndingSession(true);
       const token = await getToken();
-      const res = await axios.post(
+       await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/interviews/${id}/sessions/${sessionId}/end`,
         {},
         { headers: { Authorization: `Bearer ${token}` } },
