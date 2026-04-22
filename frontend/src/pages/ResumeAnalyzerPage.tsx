@@ -1114,37 +1114,4 @@ export default function ResumeAnalyzerPage() {
   );
 }
 
-function Field({
-  label,
-  id,
-  type = "text",
-  placeholder,
-  value,
-  onChange,
-}: {
-  label: string;
-  id: string;
-  type?: string;
-  placeholder?: string;
-  value: string | number;
-  onChange: (v: string) => void;
-}) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label
-        htmlFor={id}
-        className="text-[11px] font-bold text-slate-400 uppercase tracking-widest"
-      >
-        {label}
-      </label>
-      <input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        value={value === 0 && type === "number" ? "" : value}
-        onChange={(e) => onChange(e.target.value)}
-        className="border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm bg-slate-50/50 text-slate-800 placeholder:text-slate-300 shadow-sm transition-all duration-200 hover:border-slate-300 hover:bg-white hover:shadow-md focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/25 focus:bg-white focus:shadow-[0_0_0_4px_rgba(99,102,241,0.08)]"
-      />
-    </div>
-  );
-}
+

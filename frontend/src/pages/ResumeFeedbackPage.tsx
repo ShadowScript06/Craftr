@@ -76,7 +76,7 @@ function PageSkeleton() {
 }
 
 // ── Score ring ────────────────────────────────────────────────────────────────
-function ScoreRing({ score, label, grad, size = 80 }: {
+function ScoreRing({ score, label,  size = 80 }: {
   score: number; label: string; grad: string; size?: number;
 }) {
   const r          = (size / 2) - 8;
@@ -115,7 +115,7 @@ function ScoreRing({ score, label, grad, size = 80 }: {
 }
 
 // ── Score bar card ────────────────────────────────────────────────────────────
-function ScoreCard({ label, score, feedback, grad, shadow, pill }: {
+function ScoreCard({ label, score, feedback, grad,  pill }: {
   label: string; score: number; feedback: string;
   grad: string; shadow: string; pill: string;
 }) {

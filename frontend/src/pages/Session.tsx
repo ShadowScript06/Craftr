@@ -23,73 +23,73 @@ interface Question {
 }
 
 // ── Skeleton ──────────────────────────────────────────────────────────────────
-const shimmerTransition: Transition = {
-  duration: 1.4,
-  repeat: Infinity,
-  ease: "easeInOut",
-};
-const shimmer = {
-  animate: { opacity: [0.4, 0.9, 0.4] },
-  transition: shimmerTransition,
-};
+// const shimmerTransition: Transition = {
+//   duration: 1.4,
+//   repeat: Infinity,
+//   ease: "easeInOut",
+// };
+// const shimmer = {
+//   animate: { opacity: [0.4, 0.9, 0.4] },
+//   transition: shimmerTransition,
+// };
 
-function SessionSkeleton() {
-  return (
-    <div className="space-y-6 max-w-2xl mx-auto">
-      {/* Progress bar skeleton */}
-      <div className="bg-white/80 backdrop-blur-lg rounded-2xl border border-slate-200/60 shadow-md p-4 flex items-center gap-4">
-        <motion.div
-          {...shimmer}
-          className="h-3 w-24 bg-slate-200 rounded-full"
-        />
-        <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
-          <motion.div
-            {...shimmer}
-            className="h-full w-1/3 bg-slate-200 rounded-full"
-          />
-        </div>
-        <motion.div
-          {...shimmer}
-          className="h-3 w-16 bg-slate-100 rounded-full"
-        />
-      </div>
+// function SessionSkeleton() {
+//   return (
+//     <div className="space-y-6 max-w-2xl mx-auto">
+//       {/* Progress bar skeleton */}
+//       <div className="bg-white/80 backdrop-blur-lg rounded-2xl border border-slate-200/60 shadow-md p-4 flex items-center gap-4">
+//         <motion.div
+//           {...shimmer}
+//           className="h-3 w-24 bg-slate-200 rounded-full"
+//         />
+//         <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+//           <motion.div
+//             {...shimmer}
+//             className="h-full w-1/3 bg-slate-200 rounded-full"
+//           />
+//         </div>
+//         <motion.div
+//           {...shimmer}
+//           className="h-3 w-16 bg-slate-100 rounded-full"
+//         />
+//       </div>
 
-      {/* Question card skeleton */}
-      <div className="bg-white/80 backdrop-blur-lg rounded-3xl border border-slate-200/60 shadow-xl p-8 space-y-5">
-        <motion.div
-          {...shimmer}
-          className="h-3 w-20 bg-slate-200 rounded-full"
-        />
-        <motion.div
-          {...shimmer}
-          className="h-6 w-full bg-slate-200 rounded-xl"
-        />
-        <motion.div
-          {...shimmer}
-          className="h-4 w-3/4 bg-slate-100 rounded-xl"
-        />
-        <motion.div
-          {...shimmer}
-          className="h-32 w-full bg-slate-100 rounded-2xl mt-4"
-        />
-        <div className="flex gap-3 pt-2">
-          <motion.div
-            {...shimmer}
-            className="h-10 w-24 bg-slate-200 rounded-xl"
-          />
-          <motion.div
-            {...shimmer}
-            className="h-10 flex-1 bg-slate-200 rounded-xl"
-          />
-          <motion.div
-            {...shimmer}
-            className="h-10 w-24 bg-slate-200 rounded-xl"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
+//       {/* Question card skeleton */}
+//       <div className="bg-white/80 backdrop-blur-lg rounded-3xl border border-slate-200/60 shadow-xl p-8 space-y-5">
+//         <motion.div
+//           {...shimmer}
+//           className="h-3 w-20 bg-slate-200 rounded-full"
+//         />
+//         <motion.div
+//           {...shimmer}
+//           className="h-6 w-full bg-slate-200 rounded-xl"
+//         />
+//         <motion.div
+//           {...shimmer}
+//           className="h-4 w-3/4 bg-slate-100 rounded-xl"
+//         />
+//         <motion.div
+//           {...shimmer}
+//           className="h-32 w-full bg-slate-100 rounded-2xl mt-4"
+//         />
+//         <div className="flex gap-3 pt-2">
+//           <motion.div
+//             {...shimmer}
+//             className="h-10 w-24 bg-slate-200 rounded-xl"
+//           />
+//           <motion.div
+//             {...shimmer}
+//             className="h-10 flex-1 bg-slate-200 rounded-xl"
+//           />
+//           <motion.div
+//             {...shimmer}
+//             className="h-10 w-24 bg-slate-200 rounded-xl"
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 // ── Loading overlay ───────────────────────────────────────────────────────────
 function LoadingOverlay({ text }: { text: string }) {
@@ -173,7 +173,7 @@ function QuestionCarousel({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [toast, setToast] = useState<string | null>(null);
-  const [submittedIds, setSubmittedIds] = useState<Set<string>>(new Set());
+  const [submittedIds] = useState<Set<string>>(new Set());
 
   const currentQuestion = questions[currentIndex];
   const total = questions.length;
