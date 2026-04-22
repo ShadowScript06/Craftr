@@ -15,8 +15,9 @@ export default function UpdateApplicationModal({
   setApp,
   app,
 }: {
+
   onClose: () => void;
-  setApp: (a: Application[]) => void;
+  setApp: any;
   app: Application;
 }) {
   const [form, setForm] = useState<FormState>({

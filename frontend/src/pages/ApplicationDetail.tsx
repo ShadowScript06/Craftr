@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import type {
- 
-  ApplicationDetailProps,
   AppData,
   Note,
  
@@ -26,7 +24,7 @@ export default function ApplicationDetail( ){
   const [noteText, setNoteText] = useState<string>("");
 
   const [editingNote, setEditingNote] = useState<boolean>(false);
-  const [toast, setToast] = useState<string | null>(null);
+  const [toast,] = useState<string | null>(null);
   const [noteId, setNoteId] = useState<string | null>(null);
   let status;
   const [loading, setLoading] = useState<boolean>(false);
@@ -177,7 +175,7 @@ export default function ApplicationDetail( ){
     try {
       setDeletingNote(true);
       const token = await getToken();
-      const response = await axios.delete(
+       await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/applications/${id}/notes/${noteId}`,
         {
           headers: {
