@@ -4,6 +4,75 @@
 
 ---
 
+
+## Live Demo
+
+- [Visit Craftr](https://craftr-vwsp-ecru.vercel.app/)
+
+---
+
+
+## Landing
+![Landing](./screenshots/landing.png)
+
+---
+
+## Dashboard
+![Dashboard](./screenshots/dashboard.png)
+
+---
+
+## Interview Preparation
+
+![Preparation](./screenshots/preparations.png)
+
+---
+
+## Preparation Session
+
+![Preparation](./screenshots/preparation-session.png)
+
+---
+
+## Mock test
+
+![Mock Test](./screenshots/mock-test.png)
+
+---
+
+## Mock test session
+
+![Mock Test](./screenshots/mock-test-session.png)
+
+---
+
+## Resume Analyser 
+
+![Resume Analyser](./screenshots/resume-analyser1.png)
+
+---
+
+## Resume Analyser 
+
+![Resume Analyser](./screenshots/resume-analyser-2.png)
+
+---
+
+## Application Tracker
+
+![Application Tracker](./screenshots/application-tracker.png)
+
+---
+## Application Tracker 
+
+![Tracking Details](./screenshots/tracking-details.png)
+
+---
+
+## Architecture
+
+![Architecture](./screenshots/architecture.png)
+
 ## Table of Contents
 
 - [Overview](#overview)
